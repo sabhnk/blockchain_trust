@@ -1,0 +1,91 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+
+
+    During this study we will describe a hypothetical situation and kindly ask you to complete a corresponding questionnaire.
+    <br />
+    <br />
+
+    <b>Experiment</b>
+    <br />
+    <br />
+
+    Imagine the following situation.
+    <br />
+    <br />
+
+    You have the opportunity to participate in a financial exchange game.
+    The currency used is ECU (Experimental Currency Unit).
+    <br />
+    The exchange rate is as follows.
+    <br />
+    <br />
+    1 ECU = {{session.real_world_currency_per_point}} €
+    <br />
+    <br />
+
+    You are divided into two groups, A and B. Then each participant is randomly assigned a partner from the other group.
+    Player A starts with a random amount. From this amount he can send a part x to his partner from group B.
+    It is possible to send any amount between zero and the total amount.
+    This amount is tripled by the experimenter and passed on to player B.
+    Player B now decides which part of 3x he sends back to A.
+    <br />
+    <br />
+    <br />
+    The transaction would take place exclusively between you and your partner from the other participant group.
+    The only influence from outside would come from the experimenter in tripling the amount.
+    <br />
+    <br />
+    <br />
+
+    {% comment %} treatment specific instruction {% endcomment %}
+
+    {% if player.transparent %}
+        Each participant gets a pseudonym, which they keep throughout the whole experiment.
+        The transaction takes place on a blockchain network.
+        This means that transaction details of you and all other participants,
+        such as the pseudonyms of the sender and recipient, amount and time of the transaction
+        are publicly visible and permanently stored.
+        <br />
+        <br />
+        Exemplary representation of 4 completed transactions:
+        <br />
+        <br />
+        <img src="{% static 'Transaction_Overview.png' %}"/>
+        <br />
+
+    {% else %}
+        Your transaction details will only be visible for you and your transaction partner.
+        <br />
+    {% endif %}
+
+    <br />
+    <br />
+    <br />
+
+    <b>Pay-Out</b>
+    <br />
+    <br />
+    Your pay-out would depend on your decision and the decision of your partner.
+    <br />
+    <br />
+    <u>Player A</u>: Initial amount – amount sent to B + amount received back from B
+    <br />
+    <u>Player B</u>: Initial amount + triple the amount sent from A – amount sent back to A
+    <br />
+
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

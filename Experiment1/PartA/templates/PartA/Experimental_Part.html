@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Experiment
+{% endblock %}
+
+{% block content %}
+    
+    Your role is: Player A. Your pseudonym: hg647j8ek
+    <br />
+
+    <br />
+    Your current balance is: {{ player.current_balance }}
+
+    <br />
+    <br />
+    <br />
+    Please consider the following two questions. Remember this is a hypothetical situation, thus your pay-out will <b>not</b> be affected by your answers.
+    <br />
+    <br />
+    <br />
+
+
+    {% formfield player.intention %}
+    <br />
+    <br />
+    <br />
+
+
+    {% formfield player.intention_amount %}
+    <br />
+    If you do not wish to transact, please set the amount to 0.
+
+
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}
