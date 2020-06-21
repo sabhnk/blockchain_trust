@@ -13,29 +13,52 @@ import random
 author = 'Sabrina Hinkerohe'
 
 doc = """
-Experiment 1 (Intention) : Part A
+Experiment 2 (Behavior) : Part A
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'PartA_Introduction'
-    players_per_group = None
+    name_in_url = 'PartA'
+    players_per_group = 2
     num_rounds = 1
+
+    endowment = c(10)
+    multiplication_factor = 3
 
 
 # Treatment / Control Group
 class Subsession(BaseSubsession):
-
-    def creating_session(self):
-        # if self.round_number == 1:
-        for player in self.get_players():
-            player.transparent = random.choice([True, False])
-            # will be kept for multiple rounds, because it is coupled with participant:
-            # player.participant.vars['transparent'] = random.choice([True, False])
+    # is executed each time, a player arrives on the wait page
+    def group_by_arrival_time_method(self, waiting_players):
+        # put waiting players onto two separate lists according to attribute transparent_PartA
+        transparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartA'] == True]
+        nontransparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartA'] == False]
+        # put first player of each list together in one group
+        if len(transparent_players) >= 1 and len(nontransparent_players) >= 1:
+            # create group
+            return [transparent_players[0], nontransparent_players[0]]
 
 
 class Group(BaseGroup):
-    pass
+    sent_amount = models.CurrencyField(
+        label="How much do you want to send to participant B?"
+    )
+    sent_back_amount = models.CurrencyField(
+        label="How much do you want to send back?"
+    )
+
+    def sent_back_amount_choices(self):
+        return currency_range(
+            c(0),
+            self.sent_amount * Constants.multiplication_factor,
+            c(1)
+        )
+
+    def set_payoffs(self):
+        playerA = self.get_player_by_id(1)
+        playerB = self.get_player_by_id(2)
+        playerA.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
+        playerB.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
 
 
 def likert7(label):
@@ -54,6 +77,7 @@ def likert7(label):
         widget=widgets.RadioSelect
     )
 
+
 # def likert7(label):
 #     return models.IntegerField(
 #         # users see choice options and answers will be stored as integers
@@ -65,8 +89,14 @@ def likert7(label):
 
 class Player(BasePlayer):
     pseudonym = models.StringField()
-    current_balance = models.CurrencyField()
-    transparent = models.BooleanField()
+    transparent_first = models.BooleanField()
+
+    def role(self):
+        if self.id_in_group == 1:
+            return 'sender'
+        else:
+            return 'recipient'
+
     correct_confirmatory_questions = models.BooleanField()
 
     manipulation = likert7('The setting of this financial transaction makes me feel transparent.')
@@ -83,11 +113,6 @@ class Player(BasePlayer):
     intention_amount = models.CurrencyField(
         label="What amount would you use to transact and send to Player B?",
     )
-
-
-
-
-
 
     pc_1 = likert7('I am concerned that the information I provide to the blockchain network could be misused.')
     pc_2 = likert7(

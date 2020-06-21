@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Thank you!
+{% endblock %}
+
+{% block content %}
+
+    Thank you for participating!
+
+    {% if player.id_in_group == 1 %}
+    <p>
+        You sent Player B {{ group.sent_amount }}.
+        Player B returned {{ group.sent_back_amount }}.
+    </p>
+{% else %}
+    <p>
+        Player A sent you {{ group.sent_amount }}.
+        You returned {{ group.sent_back_amount }}.
+    </p>
+
+{% endif %}
+
+<p>
+Therefore, your payoff is {{ player.payoff }}.
+</p>
+
+
+    {% comment %}Your final balance is: {{ participant.payoff }} {% endcomment %}
+    <br/>
+    <br/>
+    Your final payoff is: {{ participant.payoff_plus_participation_fee }}
+    <br/>
+    <br/>
+    {% next_button %}
+{% endblock %}
+
+

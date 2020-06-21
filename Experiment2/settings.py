@@ -11,8 +11,8 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     dict(
-        name='Experiment1',
-        display_name="Experiment 1 (Intention) : Part A",
+        name='Experiment2',
+        display_name="Experiment 2 (Behavior)",
         num_demo_participants=1,
         app_sequence=['PartA_Introduction'],
     ),
