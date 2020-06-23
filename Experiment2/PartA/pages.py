@@ -22,12 +22,13 @@ class ShuffleWaitPage(WaitPage):
 
 
 class Experimental_Part_Send(Page):
+    template_name = 'global/Experimental_Part_Send.html'
     # condition-specific
-    form_model = 'player'
+    form_model = 'group'
     form_fields = ['sent_amount']
 
     def is_displayed(self):
-        # exclude player with incorrect answers to confirmaotry questions & only show to Player A of group
+        # exclude player with incorrect answers to confirmatory questions & only show to Player A of group
         return self.participant.vars['correct_confirmatory_questions_PartA'] and self.player.id_in_group == 1
 
 
@@ -39,12 +40,13 @@ class Wait_for_PlayerA(WaitPage):
 
 
 class Experimental_Part_SendBack(Page):
-
+    template_name = 'global/Experimental_Part_SendBack.html'
     form_model = 'group'
     form_fields = ['sent_back_amount']
 
     def is_displayed(self):
-        return self.player.correct_confirmatory_questions and self.player.id_in_group == 2
+        # exclude player with incorrect answers to confirmatory questions & only show to Player B of group
+        return self.participant.vars['correct_confirmatory_questions_PartA'] and self.player.id_in_group == 2
 
     def vars_for_template(self):
         return dict(
@@ -53,34 +55,43 @@ class Experimental_Part_SendBack(Page):
 
 
 class Wait_for_PlayerB(WaitPage):
-    after_all_players_arrive = 'set_payoffs'
+
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
+
+    # TODO: adjust current balance, as payoff is only paid if participants also finish Part B?
+    # after_all_players_arrive = 'set_payoffs'
 
 
 class Attention_Check(Page):
+    template_name = 'global/Attention_Check.html'
     # same for each participant
     form_model = 'player'
     form_fields = ['attention']
 
     def is_displayed(self):
-        return self.player.correct_confirmatory_questions
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Survey(Page):
+    template_name = 'global/Survey.html'
     # condition-specific
     form_model = 'player'
     form_fields = ['pc_1', 'pc_2', 'pc_3', 'benefit_1', 'benefit_2', 'benefit_3', ]
 
     def is_displayed(self):
-        return self.player.correct_confirmatory_questions
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
-    # calculate payoff
-    def before_next_page(self):
-        self.participant.payoff += self.player.current_balance
-        self.player.current_balance -= self.player.current_balance
+    # TODO: calculate current balance or payoff?
+    # def before_next_page(self):
+    #     self.participant.payoff += self.player.current_balance
+    #     self.player.current_balance -= self.player.current_balance
 
 
 
 class Results(Page):
+    template_name = 'global/Results.html'
+    # do not show payoff yet, as this may influence behavior (we do not want to measure 'past experience' as a variable
     pass
 
 

@@ -13,8 +13,8 @@ SESSION_CONFIGS = [
     dict(
         name='Experiment2',
         display_name="Experiment 2 (Behavior)",
-        num_demo_participants=1,
-        app_sequence=['PartA_Introduction'],
+        num_demo_participants=100,
+        app_sequence=['PartA_Introduction', 'PartA'],
     ),
 ]
 

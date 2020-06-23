@@ -88,8 +88,6 @@ def likert7(label):
 
 
 class Player(BasePlayer):
-    pseudonym = models.StringField()
-    transparent_first = models.BooleanField()
 
     def role(self):
         if self.id_in_group == 1:
@@ -97,23 +95,8 @@ class Player(BasePlayer):
         else:
             return 'recipient'
 
-    correct_confirmatory_questions = models.BooleanField()
 
     manipulation = likert7('The setting of this financial transaction makes me feel transparent.')
-
-    intention = models.BooleanField(
-        label='Would you conclude a transaction on the blockchain network?',
-        choices=[
-            [True, 'Yes'],
-            [False, 'No'],
-        ],
-        widget=widgets.RadioSelect
-    )
-
-    intention_amount = models.CurrencyField(
-        label="What amount would you use to transact and send to Player B?",
-    )
-
     pc_1 = likert7('I am concerned that the information I provide to the blockchain network could be misused.')
     pc_2 = likert7(
         'I am concerned that anyone will be able to find private information about me on the blockchain network.')
