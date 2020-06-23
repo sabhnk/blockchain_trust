@@ -3,15 +3,12 @@ from ._builtin import Page, WaitPage
 from .models import Constants
 
 
-
 class ShuffleWaitPage(WaitPage):
     # only for players with correct answers to confirmatory questions
     def is_displayed(self):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
     group_by_arrival_time = True
-
-
 
     # TODO: for PartB: shuffle partner, but A stays A
     # shuffle players between groups but keep players in fixed roles: aus Subsession
@@ -36,6 +33,7 @@ class Wait_for_PlayerA(WaitPage):
     def is_displayed(self):
         # do not show for player that did not get sorted into groups due to incorrect answers
         return self.participant.vars['correct_confirmatory_questions_PartA']
+
     pass
 
 
@@ -59,8 +57,7 @@ class Wait_for_PlayerB(WaitPage):
     def is_displayed(self):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
-    # TODO: adjust current balance, as payoff is only paid if participants also finish Part B?
-    # after_all_players_arrive = 'set_payoffs'
+    after_all_players_arrive = 'set_payoffs'
 
 
 class Attention_Check(Page):
@@ -82,17 +79,13 @@ class Survey(Page):
     def is_displayed(self):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
-    # TODO: calculate current balance or payoff?
-    # def before_next_page(self):
-    #     self.participant.payoff += self.player.current_balance
-    #     self.player.current_balance -= self.player.current_balance
-
-
 
 class Results(Page):
     template_name = 'global/Results.html'
-    # do not show payoff yet, as this may influence behavior (we do not want to measure 'past experience' as a variable
+    # TODO: do not show payoff yet, as this may influence behavior (we do not want to measure 'past experience' as a variable?
+    # TODO: maybe incorporate random part into payoff?
     pass
 
 
-page_sequence = [ShuffleWaitPage, Experimental_Part_Send, Wait_for_PlayerA, Experimental_Part_SendBack, Wait_for_PlayerB, Attention_Check, Survey, Results]
+page_sequence = [ShuffleWaitPage, Experimental_Part_Send, Wait_for_PlayerA, Experimental_Part_SendBack,
+                 Wait_for_PlayerB, Attention_Check, Survey, Results]

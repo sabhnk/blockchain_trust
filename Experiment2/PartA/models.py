@@ -34,9 +34,11 @@ class Subsession(BaseSubsession):
         transparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartA'] == True]
         nontransparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartA'] == False]
         # put first player of each list together in one group
-        if len(transparent_players) >= 1 and len(nontransparent_players) >= 1:
+        if len(transparent_players) > 1:
             # create group
-            return [transparent_players[0], nontransparent_players[0]]
+            return [transparent_players[0], transparent_players[1]]
+        elif len(nontransparent_players) > 1:
+            return [nontransparent_players[0], nontransparent_players[1]]
 
 
 class Group(BaseGroup):
@@ -89,12 +91,12 @@ def likert7(label):
 
 class Player(BasePlayer):
 
+
     def role(self):
         if self.id_in_group == 1:
             return 'sender'
         else:
             return 'recipient'
-
 
     manipulation = likert7('The setting of this financial transaction makes me feel transparent.')
     pc_1 = likert7('I am concerned that the information I provide to the blockchain network could be misused.')
@@ -118,46 +120,6 @@ class Player(BasePlayer):
             [5, 'Skiing holiday'],
             [6, 'Cruise'],
             [7, 'Other'],
-        ],
-        widget=widgets.RadioSelect
-    )
-
-    confirm_1 = models.IntegerField(
-        label='When you sent 90 ECU to Player B, how much will Player B receive?',
-        choices=[
-            [1, '90 ECU'],
-            [2, '270 ECU'],
-            [3, '30 ECU'],
-        ],
-        widget=widgets.RadioSelect
-    )
-
-    confirm_2 = models.IntegerField(
-        label='When you receive 90 ECU from Player A, how much did Player A send?',
-        choices=[
-            [1, '90 ECU'],
-            [2, '270 ECU'],
-            [3, '30 ECU'],
-        ],
-        widget=widgets.RadioSelect
-    )
-
-    confirm_3 = models.IntegerField(
-        label='My pay-out directly depends on…?',
-        choices=[
-            [1, '...my own decisions only'],
-            [2, '...my partners decisions only'],
-            [3, '...my own and my partners decision'],
-        ],
-        widget=widgets.RadioSelect
-    )
-
-    confirm_4 = models.IntegerField(
-        label='My transaction details will be visible for…?',
-        choices=[
-            [1, '...myself only'],
-            [2, '...myself and my partner'],
-            [3, '...myself, my partner and all other participants'],
         ],
         widget=widgets.RadioSelect
     )
