@@ -29,8 +29,6 @@ class Constants(BaseConstants):
 # Treatment / Control Group
 class Subsession(BaseSubsession):
     # is executed each time, a player arrives on the wait page
-    def creating_session(self):
-        self.group_randomly(fixed_id_in_group=True)
 
     def group_by_arrival_time_method(self, waiting_players):
         # put waiting players onto two separate lists according to attribute transparent_PartB
@@ -66,6 +64,7 @@ class Group(BaseGroup):
         )
 
     def set_payoffs(self):
+        # TODO: anpassen
         playerA = self.get_player_by_id(1)
         playerB = self.get_player_by_id(2)
         playerA.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
@@ -99,7 +98,6 @@ def likert7(label):
 
 
 class Player(BasePlayer):
-
 
     def role(self):
         if self.id_in_group == 1:

@@ -4,15 +4,19 @@ from .models import Constants
 
 
 class Welcome(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Instructions(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
     # condition-specific
 
 
 class Confirmatory_Questions(Page):
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
     # same questions, but answers are condition specific
     form_model = 'player'
     form_fields = ['confirm_1', 'confirm_2', 'confirm_3', 'confirm_4']
@@ -35,11 +39,16 @@ class Confirmatory_Questions(Page):
                 self.participant.vars['correct_confirmatory_questions_PartB'] = True
 
 
+
+
 class Confirmatory_Results(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Manipulation_Check(Page):
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
     # same for each participant
     form_model = 'player'
     form_fields = ['manipulation']

@@ -18,7 +18,7 @@ Experiment 2 (Behavior) : Part A
 
 
 class Constants(BaseConstants):
-    name_in_url = 'PartB'
+    name_in_url = 'PartA'
     players_per_group = 2
     num_rounds = 1
 
