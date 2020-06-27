@@ -27,6 +27,9 @@ class Experimental_Part_Send(Page):
         # exclude player with incorrect answers to confirmatory questions & only show to Player A of group
         return self.participant.vars['correct_confirmatory_questions_PartB'] and self.player.id_in_group == 1
 
+    def before_next_page(self):
+        self.participant.vars['id_in_group_PartB'] = 1
+
 
 class Wait_for_PlayerA(WaitPage):
     def is_displayed(self):
@@ -48,7 +51,8 @@ class Experimental_Part_SendBack(Page):
         return dict(
             tripled_amount=self.group.sent_amount * Constants.multiplication_factor
         )
-
+    def before_next_page(self):
+        self.participant.vars['id_in_group_PartB'] = 2
 
 class Wait_for_PlayerB(WaitPage):
 
@@ -77,8 +81,7 @@ class Survey(Page):
 
 
 class Results(Page):
-    # TODO: do not show payoff yet, as this may influence behavior (we do not want to measure 'past experience' as a variable?
-    # TODO: maybe incorporate random part into payoff?
+    # TODO: show payoff from PartA & PartB
     pass
 
 

@@ -91,7 +91,6 @@ def likert7(label):
 
 class Player(BasePlayer):
 
-
     def role(self):
         if self.id_in_group == 1:
             return 'sender'

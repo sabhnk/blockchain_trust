@@ -29,16 +29,25 @@ class Constants(BaseConstants):
 # Treatment / Control Group
 class Subsession(BaseSubsession):
     # is executed each time, a player arrives on the wait page
+    def creating_session(self):
+        self.group_randomly(fixed_id_in_group=True)
+
     def group_by_arrival_time_method(self, waiting_players):
         # put waiting players onto two separate lists according to attribute transparent_PartB
-        transparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartB'] == True]
-        nontransparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartB'] == False]
+        transparent_players_role1 = [player for player in waiting_players if player.participant.vars['transparent_PartB'] == True and player.participant.vars['id_in_group_PartA'] == 1]
+        transparent_players_role2 = [player for player in waiting_players if player.participant.vars['transparent_PartB'] == True and player.participant.vars['id_in_group_PartA'] == 2]
+        nontransparent_players_role1 = [player for player in waiting_players if player.participant.vars['transparent_PartB'] == False and player.participant.vars['id_in_group_PartA'] == 1]
+        nontransparent_players_role2 = [player for player in waiting_players if
+                                        player.participant.vars['transparent_PartB'] == False and
+                                        player.participant.vars['id_in_group_PartA'] == 2]
+
         # put first player of each list together in one group
-        if len(transparent_players) > 1:
+        if len(transparent_players_role1) > 0 and len(transparent_players_role2) > 0:
             # create group
-            return [transparent_players[0], transparent_players[1]]
-        elif len(nontransparent_players) > 1:
-            return [nontransparent_players[0], nontransparent_players[1]]
+            return [transparent_players_role1[0], transparent_players_role2[0]]
+        elif len(nontransparent_players_role1) > 0 and len(nontransparent_players_role2) > 0:
+            # create group
+            return [nontransparent_players_role1[0], nontransparent_players_role2[0]]
 
 
 class Group(BaseGroup):

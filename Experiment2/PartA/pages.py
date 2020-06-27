@@ -19,6 +19,9 @@ class Experimental_Part_Send(Page):
         # exclude player with incorrect answers to confirmatory questions & only show to Player A of group
         return self.participant.vars['correct_confirmatory_questions_PartA'] and self.player.id_in_group == 1
 
+    def before_next_page(self):
+        self.participant.vars['id_in_group_PartA'] = 1
+
 
 class Wait_for_PlayerA(WaitPage):
     def is_displayed(self):
@@ -41,6 +44,8 @@ class Experimental_Part_SendBack(Page):
             tripled_amount=self.group.sent_amount * Constants.multiplication_factor
         )
 
+    def before_next_page(self):
+        self.participant.vars['id_in_group_PartA'] = 2
 
 class Wait_for_PlayerB(WaitPage):
 

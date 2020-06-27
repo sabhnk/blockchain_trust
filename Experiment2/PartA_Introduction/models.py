@@ -27,7 +27,7 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
 
     def creating_session(self):
-        # if self.round_number == 1:
+        # self.get_players(): Returns a list of all the players in the subsession.
         for player in self.get_players():
             # attribute will be kept for multiple rounds, because it is couples with participant not player
             player.participant.vars['transparent_PartA'] = random.choice([True, False])
