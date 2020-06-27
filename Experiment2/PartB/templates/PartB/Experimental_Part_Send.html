@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Experiment: Your Choice
+{% endblock %}
+
+{% block content %}
+    
+    Your role is <b>Player A</b>. Your pseudonym: hg647j8ek
+    <br />
+
+    <br />
+    Your current balance is: {{Constants.endowment}}
+
+    <br />
+    <br />
+    <br />
+    {% formfields %}
+    <br />
+    Remember your pay-out <b>will be</b> affected by your choice.
+
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

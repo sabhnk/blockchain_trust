@@ -19,20 +19,20 @@ class Confirmatory_Questions(Page):
 
     # if answers are wrong, set payout to 0
     def before_next_page(self):
-        if self.participant.vars['transparent_PartA']:
+        if self.participant.vars['transparent_PartB']:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 3):
                 self.participant.payoff = c(0)
-                self.participant.vars['correct_confirmatory_questions_PartA'] = False
+                self.participant.vars['correct_confirmatory_questions_PartB'] = False
             else:
-                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+                self.participant.vars['correct_confirmatory_questions_PartB'] = True
         else:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 2):
                 self.participant.payoff = c(0)
-                self.participant.vars['correct_confirmatory_questions_PartA'] = False
+                self.participant.vars['correct_confirmatory_questions_PartB'] = False
             else:
-                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+                self.participant.vars['correct_confirmatory_questions_PartB'] = True
 
 
 class Confirmatory_Results(Page):
@@ -45,7 +45,7 @@ class Manipulation_Check(Page):
     form_fields = ['manipulation']
 
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB']
 
 
 page_sequence = [Welcome, Instructions, Confirmatory_Questions, Confirmatory_Results, Manipulation_Check]

@@ -13,7 +13,7 @@ import random
 author = 'Sabrina Hinkerohe'
 
 doc = """
-Experiment 2 (Behavior) : Part A
+Experiment 2 (Behavior) : Part B
 """
 
 
@@ -30,9 +30,9 @@ class Constants(BaseConstants):
 class Subsession(BaseSubsession):
     # is executed each time, a player arrives on the wait page
     def group_by_arrival_time_method(self, waiting_players):
-        # put waiting players onto two separate lists according to attribute transparent_PartA
-        transparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartA'] == True]
-        nontransparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartA'] == False]
+        # put waiting players onto two separate lists according to attribute transparent_PartB
+        transparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartB'] == True]
+        nontransparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartB'] == False]
         # put first player of each list together in one group
         if len(transparent_players) > 1:
             # create group

@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Experiment: Your Choice
+{% endblock %}
+
+{% block content %}
+    
+    Your role is <b>Player B</b>. Your pseudonym: je891hu9l
+    <br />
+
+    <br />
+    Player A sent you {{group.sent_amount}}. Your current balance is: {{tripled_amount}}
+
+    <br />
+    <br />
+    <br />
+    {% formfield group.sent_back_amount %}
+    <br />
+    Remember your pay-out <b>will be</b> affected by your choice.
+
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}
