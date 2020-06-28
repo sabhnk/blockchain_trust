@@ -64,7 +64,6 @@ class Group(BaseGroup):
         )
 
     def set_payoffs(self):
-        # TODO: anpassen: payoff aus PartA dazurechnen?
         playerA = self.get_player_by_id(1)
         playerB = self.get_player_by_id(2)
         playerA.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount

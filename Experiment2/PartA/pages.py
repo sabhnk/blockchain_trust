@@ -74,8 +74,6 @@ class Survey(Page):
 
 
 class Results(Page):
-    # TODO: do not show payoff yet, as this may influence behavior (we do not want to measure 'past experience' as a variable)?
-    # TODO: maybe incorporate random part into payoff?
     pass
 
 

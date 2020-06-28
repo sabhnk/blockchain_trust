@@ -77,7 +77,6 @@ class Survey(Page):
 class Results(Page):
     def is_displayed(self):
         return self.participant.vars['correct_confirmatory_questions_PartA']
-    # TODO: show payoff from PartA & PartB
 
 
 page_sequence = [ShuffleWaitPage, Experimental_Part_Send, Wait_for_PlayerA, Experimental_Part_SendBack,
