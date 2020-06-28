@@ -1,4 +1,4 @@
-{% extends "global/Page.html" %}
+{% extends "PartA/Page.html" %}
 {% load otree static %}
 
 {% block title %}
@@ -35,7 +35,7 @@ Therefore, your payoff is {{ player.payoff }}.
     {% comment %}Your final balance is: {{ participant.payoff }} {% endcomment %}
     <br/>
     <br/>
-    Your payoff is: {{ participant.payoff_plus_participation_fee }}
+    Your current payoff is: {{ participant.payoff_plus_participation_fee }}
     <br/>
     <br/>
     {% next_button %}
