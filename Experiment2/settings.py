@@ -29,6 +29,7 @@ SESSION_CONFIGS = [
         display_name="Experiment 2 (Behavior)",
         num_demo_participants=100,
         app_sequence=['PartA_Introduction', 'PartA', 'PartB_Introduction', 'PartB'],
+        #TODO: design wechseln: Part B soll grün sein
     ),
 ]
 

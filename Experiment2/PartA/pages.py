@@ -74,6 +74,7 @@ class Survey(Page):
 
 
 class Results(Page):
+    # TODO: payoof auf Null setzen, falls confirmatory ´questions falsch
     pass
 
 
