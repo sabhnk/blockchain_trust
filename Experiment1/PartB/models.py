@@ -33,14 +33,14 @@ class Subsession(BaseSubsession):
         # self.get_players(): Returns a list of all the players in the subsession.
         for player in self.get_players():
             # attribute will be kept for multiple rounds, because it is couples with participant not player
-            # TODO: not the same transparency level as before
-            player.participant.vars['transparent_PartB'] = random.choice([True, False])
-            player.participant.vars['correct_confirmatory_questions_PartB'] = False
+            if player.participant.vars['transparent_PartA']:
+                player.participant.vars['transparent_PartB'] = False
+            else:
+                player.participant.vars['transparent_PartB'] = True
 
 
 class Group(BaseGroup):
     pass
-
 
 def likert7(label):
     return models.IntegerField(
