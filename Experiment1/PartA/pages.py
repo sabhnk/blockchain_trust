@@ -9,10 +9,7 @@ class Welcome(Page):
 
 class Instructions(Page):
     # condition-specific
-    form_model = 'player'
-
-    def before_next_page(self):
-        self.player.correct_confirmatory_questions = False
+    pass
 
 
 class Confirmatory_Questions(Page):
@@ -21,35 +18,25 @@ class Confirmatory_Questions(Page):
     form_fields = ['confirm_1', 'confirm_2', 'confirm_3', 'confirm_4']
 
     # if answers are wrong, set payout to 0
-
     def before_next_page(self):
-        if self.player.transparent:
+        if self.participant.vars['transparent_PartA']:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 3):
                 self.participant.payoff = c(0)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = False
+            else:
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
         else:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 2):
                 self.participant.payoff = c(0)
-
-
-class Confirmatory_Wrong(Page):
-    form_model = 'player'
-
-    def is_displayed(self):
-        if self.player.transparent:
-            if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
-                    self.player.confirm_4 != 3):
-                return True
+                self.participant.vars['correct_confirmatory_questions_PartA'] = False
             else:
-                return False
-        else:
-            if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
-                    self.player.confirm_4 != 2):
-                return True
-            else:
-                return False
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
 
+
+class Confirmatory_Results(Page):
+    pass
 
 
 class Manipulation_Check(Page):
@@ -58,24 +45,8 @@ class Manipulation_Check(Page):
     form_fields = ['manipulation']
 
     def is_displayed(self):
-        if self.player.transparent:
-            if (self.player.confirm_1 == 2) and (self.player.confirm_2 == 3) and (self.player.confirm_3 == 3) and (
-                    self.player.confirm_4 == 3):
-                return True
-            else:
-                return False
-        else:
-            if (self.player.confirm_1 == 2) and (self.player.confirm_2 == 3) and (self.player.confirm_3 == 3) and (
-                    self.player.confirm_4 == 2):
-                return True
-            else:
-                return False
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
-
-    def before_next_page(self):
-        # exit experiment
-        self.player.current_balance = 10
-        self.player.correct_confirmatory_questions = True
 
 
 class Experimental_Part(Page):
@@ -84,14 +55,14 @@ class Experimental_Part(Page):
     form_fields = ['intention', 'intention_amount']
 
     def is_displayed(self):
-        return self.player.correct_confirmatory_questions
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
     def error_message(self, values):
             if values['intention_amount'] < c(0):
                 return 'The amount cannot be negative.'
             else:
                 if values['intention']:
-                    if values['intention_amount'] > self.player.current_balance:
+                    if values['intention_amount'] > Constants.endowment:
                         return 'The amount cannot be higher than your current balance.'
                     elif values['intention_amount'] == c(0):
                         return 'You cannot simultaneously state "Yes" and set the amount to 0.'
@@ -106,7 +77,7 @@ class Attention_Check(Page):
     form_fields = ['attention']
 
     def is_displayed(self):
-        return self.player.correct_confirmatory_questions
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Survey(Page):
@@ -115,21 +86,12 @@ class Survey(Page):
     form_fields = ['pc_1', 'pc_2', 'pc_3', 'benefit_1', 'benefit_2', 'benefit_3', ]
 
     def is_displayed(self):
-        return self.player.correct_confirmatory_questions
-
-    # calculate payoff
-    def before_next_page(self):
-        self.participant.payoff += self.player.current_balance
-        self.player.current_balance -= self.player.current_balance
-
-
-class ResultsWaitPage(WaitPage):
-    pass
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Results(Page):
     pass
 
 
-page_sequence = [Welcome, Instructions, Confirmatory_Questions, Confirmatory_Wrong, Manipulation_Check,
+page_sequence = [Welcome, Instructions, Confirmatory_Questions, Confirmatory_Results, Manipulation_Check,
                  Experimental_Part, Attention_Check, Survey, Results]

@@ -18,20 +18,23 @@ Experiment 1 (Intention) : Part A
 
 
 class Constants(BaseConstants):
-    name_in_url = 'PartB_Introduction'
+    name_in_url = 'PartA'
     players_per_group = None
     num_rounds = 1
+
+    endowment = c(10)
+    multiplication_factor = 3
 
 
 # Treatment / Control Group
 class Subsession(BaseSubsession):
 
     def creating_session(self):
-        # if self.round_number == 1:
+        # self.get_players(): Returns a list of all the players in the subsession.
         for player in self.get_players():
-            player.transparent = random.choice([True, False])
-            # will be kept for multiple rounds, because it is coupled with participant:
-            # player.participant.vars['transparent'] = random.choice([True, False])
+            # attribute will be kept for multiple rounds, because it is couples with participant not player
+            player.participant.vars['transparent_PartA'] = random.choice([True, False])
+            player.participant.vars['correct_confirmatory_questions_PartA'] = False
 
 
 class Group(BaseGroup):
@@ -64,9 +67,6 @@ def likert7(label):
 
 
 class Player(BasePlayer):
-    current_balance = models.CurrencyField()
-    transparent = models.BooleanField()
-    correct_confirmatory_questions = models.BooleanField()
 
     manipulation = likert7('The setting of this financial transaction makes me feel transparent.')
 

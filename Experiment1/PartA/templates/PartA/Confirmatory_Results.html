@@ -1,0 +1,59 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+
+{% block title %}
+
+
+    {% if participant.vars.correct_confirmatory_questions_PartA %}
+    Your answers were correct.
+
+
+    {#    if answers are not correct#}
+    {% else %}
+    Sorry.
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+{% if participant.vars.correct_confirmatory_questions_PartA %}
+
+
+
+
+    <br />
+    You can now proceed to the experiment!
+
+
+    <br />
+    <br />
+    <br />
+
+
+{#    if answers are not correct#}
+{% else %}
+
+
+
+    <br />
+    Unfortunately, your answers were not entirely correct. Thus, you will not receive any payment!
+
+
+    <br />
+    <br />
+    <br />
+
+{% endif %}
+
+
+    {% next_button %}
+
+{% endblock %}
+
