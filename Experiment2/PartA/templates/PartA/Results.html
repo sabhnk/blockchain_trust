@@ -28,16 +28,18 @@
 {% endif %}
 
 <p>
-Therefore, your payoff is {{ player.payoff }}.
+<br/>
+Therefore, your current payoff is {{ player.payoff }}.
 </p>
 
-{% endif %}
+    {% endif %}
     {% comment %}Your final balance is: {{ participant.payoff }} {% endcomment %}
     <br/>
     <br/>
-    Your current payoff is: {{ participant.payoff_plus_participation_fee }}
+    Your payoff is: {{ participant.payoff_plus_participation_fee }}
     <br/>
     <br/>
+
     {% next_button %}
 {% endblock %}
 
