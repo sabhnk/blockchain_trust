@@ -4,39 +4,45 @@ from .models import Constants
 
 
 class Welcome(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Instructions(Page):
     # condition-specific
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Confirmatory_Questions(Page):
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
+
     # same questions, but answers are condition specific
     form_model = 'player'
     form_fields = ['confirm_1', 'confirm_2', 'confirm_3', 'confirm_4']
 
     # if answers are wrong, set payout to 0
     def before_next_page(self):
-        if self.participant.vars['transparent_PartA']:
+        if self.participant.vars['transparent_PartB']:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 3):
                 self.participant.payoff = c(0)
-                self.participant.vars['correct_confirmatory_questions_PartA'] = False
+                self.participant.vars['correct_confirmatory_questions_PartB'] = False
             else:
-                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+                self.participant.vars['correct_confirmatory_questions_PartB'] = True
         else:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 2):
                 self.participant.payoff = c(0)
-                self.participant.vars['correct_confirmatory_questions_PartA'] = False
+                self.participant.vars['correct_confirmatory_questions_PartB'] = False
             else:
-                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+                self.participant.vars['correct_confirmatory_questions_PartB'] = True
 
 
 class Confirmatory_Results(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Manipulation_Check(Page):
@@ -45,7 +51,7 @@ class Manipulation_Check(Page):
     form_fields = ['manipulation']
 
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 
@@ -55,7 +61,7 @@ class Experimental_Part(Page):
     form_fields = ['intention', 'intention_amount']
 
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars['correct_confirmatory_questions_PartA']
 
     def error_message(self, values):
             if values['intention_amount'] < c(0):
@@ -77,7 +83,7 @@ class Attention_Check(Page):
     form_fields = ['attention']
 
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Survey(Page):
@@ -86,14 +92,15 @@ class Survey(Page):
     form_fields = ['pc_1', 'pc_2', 'pc_3', 'benefit_1', 'benefit_2', 'benefit_3', ]
 
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars['correct_confirmatory_questions_PartA']
 
     def before_next_page(self):
         self.participant.payoff += Constants.completion_payoff
 
 
 class Results(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 page_sequence = [Welcome, Instructions, Confirmatory_Questions, Confirmatory_Results, Manipulation_Check,

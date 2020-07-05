@@ -6,7 +6,8 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = dict(
-    real_world_currency_per_point=0.01, participation_fee=0.20, doc="", mturk_hit_settings=dict(
+    real_world_currency_per_point=0.01, participation_fee=0.00, doc="", mturk_hit_settings=dict(
+        # TODO: adjust the following
         keywords='bonus, study',
         title='Title for your experiment',
         description='Description for your experiment',
@@ -26,10 +27,9 @@ SESSION_CONFIG_DEFAULTS = dict(
 SESSION_CONFIGS = [
     dict(
         name='Experiment1',
-        display_name="Experiment 1 (Intention) : Part A",
+        display_name="Experiment 1 (Intention)",
         num_demo_participants=100,
-        app_sequence=['PartA'],
-        # TODO: Part B hinzufügen
+        app_sequence=['PartA', 'PartB'],
     ),
 ]
 

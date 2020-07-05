@@ -13,12 +13,12 @@ import random
 author = 'Sabrina Hinkerohe'
 
 doc = """
-Experiment 1 (Intention) : Part A
+Experiment 1 (Intention) : Part B
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'PartA'
+    name_in_url = 'PartB'
     players_per_group = None
     num_rounds = 1
 
@@ -33,8 +33,9 @@ class Subsession(BaseSubsession):
         # self.get_players(): Returns a list of all the players in the subsession.
         for player in self.get_players():
             # attribute will be kept for multiple rounds, because it is couples with participant not player
-            player.participant.vars['transparent_PartA'] = random.choice([True, False])
-            player.participant.vars['correct_confirmatory_questions_PartA'] = False
+            # TODO: not the same transparency level as before
+            player.participant.vars['transparent_PartB'] = random.choice([True, False])
+            player.participant.vars['correct_confirmatory_questions_PartB'] = False
 
 
 class Group(BaseGroup):
