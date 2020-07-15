@@ -14,9 +14,6 @@ class Instructions(Page):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
-class Confirmatory_Questions(Page):
-    def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
 
     # same questions, but answers are condition specific
     form_model = 'player'
@@ -103,5 +100,5 @@ class Results(Page):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
-page_sequence = [Welcome, Instructions, Confirmatory_Questions, Confirmatory_Results, Manipulation_Check,
+page_sequence = [Welcome, Instructions, Confirmatory_Results, Manipulation_Check,
                  Experimental_Part, Attention_Check, Survey, Results]

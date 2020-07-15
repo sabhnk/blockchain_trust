@@ -9,10 +9,7 @@ class Welcome(Page):
 
 class Instructions(Page):
     # condition-specific
-    pass
 
-
-class Confirmatory_Questions(Page):
     # same questions, but answers are condition specific
     form_model = 'player'
     form_fields = ['confirm_1', 'confirm_2', 'confirm_3', 'confirm_4']
@@ -68,7 +65,7 @@ class Experimental_Part(Page):
                         return 'You cannot simultaneously state "Yes" and set the amount to 0.'
                 else:
                     if values['intention_amount'] != c(0):
-                        return 'You cannot state "No" and set an amount different than 0.'
+                        return 'You cannot simultaneously state "No" and set an amount different than 0.'
 
 
 class Attention_Check(Page):
@@ -96,5 +93,5 @@ class Results(Page):
     pass
 
 
-page_sequence = [Welcome, Instructions, Confirmatory_Questions, Confirmatory_Results, Manipulation_Check,
+page_sequence = [Welcome, Instructions, Confirmatory_Results, Manipulation_Check,
                  Experimental_Part, Attention_Check, Survey, Results]

@@ -22,7 +22,7 @@ class Constants(BaseConstants):
     players_per_group = 2
     num_rounds = 1
 
-    endowment = c(10)
+    endowment = c(50)
     multiplication_factor = 3
 
 
