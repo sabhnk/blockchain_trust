@@ -72,7 +72,7 @@ class Player(BasePlayer):
     manipulation = likert7('The setting of this financial transaction makes me feel transparent.')
 
     intention = models.BooleanField(
-        label='Would you conclude a transaction on the blockchain network?',
+        label='Would you conclude a transaction on the public blockchain network?',
         choices=[
             [True, 'Yes'],
             [False, 'No'],
@@ -81,7 +81,7 @@ class Player(BasePlayer):
     )
 
     intention_amount = models.CurrencyField(
-        label="What amount would you use to transact and send to Player B?",
+        label="What amount would you send to Player B?",
     )
 
     pc_1 = likert7('I am concerned that the information I provide to the blockchain network could be misused.')

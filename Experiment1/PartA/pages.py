@@ -61,8 +61,8 @@ class Experimental_Part(Page):
                 if values['intention']:
                     if values['intention_amount'] > Constants.endowment:
                         return 'The amount cannot be higher than your current balance.'
-                    elif values['intention_amount'] == c(0):
-                        return 'You cannot simultaneously state "Yes" and set the amount to 0.'
+                    # elif values['intention_amount'] == c(0):
+                    #     return 'You cannot simultaneously state "Yes" and set the amount to 0.'
                 else:
                     if values['intention_amount'] != c(0):
                         return 'You cannot simultaneously state "No" and set an amount different than 0.'
