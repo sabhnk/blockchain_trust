@@ -87,7 +87,7 @@ class Player(BasePlayer):
     )
 
     confirm_3 = models.IntegerField(
-        label='Your pay-out directly depends on…?',
+        label='Your payoff directly depends on…?',
         choices=[
             [1, '...my own decisions only'],
             [2, '...my partners decisions only'],
