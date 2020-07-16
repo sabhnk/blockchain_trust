@@ -59,8 +59,8 @@ class Group(BaseGroup):
     def set_payoffs(self):
         playerA = self.get_player_by_id(1)
         playerB = self.get_player_by_id(2)
-        playerA.participant.payoff = Constants.endowment - self.sent_amount + self.sent_back_amount
-        playerB.participant.payoff = self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
+        playerA.participant.payoff += Constants.endowment - self.sent_amount + self.sent_back_amount
+        playerB.participant.payoff += self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
 
 
 def likert7(label):

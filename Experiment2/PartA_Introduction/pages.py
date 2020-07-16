@@ -21,14 +21,14 @@ class Instructions(Page):
         if self.participant.vars['transparent_PartA']:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 3):
-                self.participant.payoff = c(0)
+                # self.participant.payoff = c(0)
                 self.participant.vars['correct_confirmatory_questions_PartA'] = False
             else:
                 self.participant.vars['correct_confirmatory_questions_PartA'] = True
         else:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 2):
-                self.participant.payoff = c(0)
+                # self.participant.payoff = c(0)
                 self.participant.vars['correct_confirmatory_questions_PartA'] = False
             else:
                 self.participant.vars['correct_confirmatory_questions_PartA'] = True
