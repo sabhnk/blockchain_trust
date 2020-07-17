@@ -9,8 +9,8 @@ SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.01, participation_fee=0.20, doc="", mturk_hit_settings=dict(
         # TODO: adjust the following
         keywords='bonus, study',
-        title='Title for your experiment',
-        description='Description for your experiment',
+        title='Experiment 2',
+        description='Action',
         frame_height=500,
         template='global/mturk_template.html',
         minutes_allotted_per_assignment=60,
