@@ -29,7 +29,7 @@ SESSION_CONFIGS = [
         name='Experiment2',
         display_name="Experiment 2 (Behavior)",
         num_demo_participants=100,
-        app_sequence=['PartA_Introduction', 'PartA', 'PartB_Introduction', 'PartB']
+        app_sequence=['PartA_Introduction', 'PartA', 'Filler_Task', 'PartB_Introduction', 'PartB']
     ),
 ]
 
@@ -38,7 +38,7 @@ SESSION_CONFIGS = [
 LANGUAGE_CODE = 'en'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'EUR'
+REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 POINTS_CUSTOM_NAME = 'ECU'
 
