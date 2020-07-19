@@ -17,5 +17,8 @@ class FillerTest2(Page):
     form_model = 'player'
     form_fields = ['teaser2', 'crt_lake']
 
+    def before_next_page(self):
+        self.participant.payoff += Constants.completion_payoff
+
 
 page_sequence = [FillerTest, FillerTest2, Demographics]
