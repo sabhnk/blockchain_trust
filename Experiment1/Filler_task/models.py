@@ -113,7 +113,7 @@ class Player(BasePlayer):
     )
 
     teaser3 = models.IntegerField(
-        lable='''A math test consists of 20 tasks, a student solved only two correctly at the first attempt. After 
+        label='''A math test consists of 20 tasks, a student solved only two correctly at the first attempt. After 
         studying again, the student tried again. If the average over the two attempts was 9, how many of the 20 tasks 
         did the student solve correctly on the second attempt? '''
     )
