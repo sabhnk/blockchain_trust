@@ -15,7 +15,7 @@ class FillerTest(Page):
 
 class FillerTest2(Page):
     form_model = 'player'
-    form_fields = ['teaser2', 'crt_lake']
+    form_fields = ['teaser2', 'crt_lake', 'teaser3']
 
     def before_next_page(self):
         self.participant.payoff += Constants.completion_payoff

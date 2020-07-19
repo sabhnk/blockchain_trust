@@ -27,7 +27,6 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-
     age = models.IntegerField(label='What is your age?', min=13, max=125)
 
     gender = models.IntegerField(
@@ -111,4 +110,10 @@ class Player(BasePlayer):
         label='''Which letter is missing in the following sequence?
         
         O | U | ? | H | R | A | U '''
+    )
+
+    teaser3 = models.IntegerField(
+        label='''A math test consists of 20 tasks, a student solved only two correctly at the first attempt. After 
+        studying again, the student tried again. If the average over the two attempts was 9, how many of the 20 tasks 
+        did the student solve correctly on the second attempt? '''
     )
