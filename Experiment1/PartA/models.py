@@ -121,7 +121,6 @@ class Player(BasePlayer):
             [6, 'Cruise'],
             [7, 'Other'],
         ],
-        widget=widgets.RadioSelect
     )
 
     confirm_1 = models.IntegerField(
