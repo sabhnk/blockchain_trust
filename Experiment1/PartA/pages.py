@@ -8,7 +8,6 @@ class Welcome(Page):
 
 
 class Instructions(Page):
-    # test
     # condition-specific
 
     # same questions, but answers are condition specific
