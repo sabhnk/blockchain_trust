@@ -7,7 +7,7 @@ from os import environ
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.01, participation_fee=0.20, doc="", mturk_hit_settings=dict(
-        # TODO: adjust the following
+        # adjust the following, if needed
         keywords='bonus, study',
         title='Experiment 2',
         description='Action',

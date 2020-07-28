@@ -7,7 +7,7 @@ from os import environ
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.01, participation_fee=0.20, doc="", mturk_hit_settings=dict(
-        # TODO: adjust the following
+        # adjust the following, if needed
         keywords='bonus, study',
         title='Experiment 1',
         description='Intention',
@@ -16,7 +16,7 @@ SESSION_CONFIG_DEFAULTS = dict(
         minutes_allotted_per_assignment=60,
         expiration_hours=7 * 24,
         qualification_requirements=[],
-            # TODO: adjust qualification id
+            # adjust qualification id: only relevant in Experiment2
             # 'QualificationTypeId': "YOUR_QUALIFICATION_ID_HERE",
             # 'Comparator': "DoesNotExist",
 
