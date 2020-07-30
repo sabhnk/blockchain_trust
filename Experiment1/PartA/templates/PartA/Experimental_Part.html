@@ -9,7 +9,10 @@
 
 {% block content %}
     
-    Your role is: Player A. Your pseudonym: hg647j8ek
+    Your role is <b>Player A</b>.
+    {% if participant.vars.transparent_PartA %}
+    Your pseudonym: hg647j8ek
+    {% endif %}
     <br />
 
     <br />
