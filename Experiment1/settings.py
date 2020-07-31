@@ -15,12 +15,17 @@ SESSION_CONFIG_DEFAULTS = dict(
         template='global/mturk_template.html',
         minutes_allotted_per_assignment=60,
         expiration_hours=7 * 24,
-        qualification_requirements=[],
-            # adjust qualification id: only relevant in Experiment2
-            # 'QualificationTypeId': "YOUR_QUALIFICATION_ID_HERE",
-            # 'Comparator': "DoesNotExist",
-
-        grant_qualification_id='Exp1Trial1', # to prevent retakes
+        qualification_requirements=[
+            {
+                'QualificationTypeId': "Experiment1_Blockchain_trust_2020_198",
+                'Comparator': "DoesNotExist",
+            },
+            {
+                'QualificationTypeId': "Experiment2_Blockchain_trust_2020_198",
+                'Comparator': "DoesNotExist",
+            },
+        ],
+        grant_qualification_id='Experiment1_Blockchain_trust_2020_198',  # to prevent retakes
     )
 )
 
