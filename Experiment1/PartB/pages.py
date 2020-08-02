@@ -100,5 +100,7 @@ class Results(Page):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
+
+
 page_sequence = [Welcome, Instructions, Confirmatory_Results, Manipulation_Check,
                  Experimental_Part, Attention_Check, Survey, Results]

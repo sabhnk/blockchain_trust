@@ -16,6 +16,7 @@ class Instructions(Page):
 
     # if answers are wrong, set payout to 0
     def before_next_page(self):
+        self.participant.vars['correct_confirmatory_questions_PartB'] = False
         if self.participant.vars['transparent_PartA']:
             if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
                     self.player.confirm_4 != 3):
@@ -45,7 +46,6 @@ class Manipulation_Check(Page):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
-
 class Experimental_Part(Page):
     # condition-specific
     form_model = 'player'
@@ -55,17 +55,17 @@ class Experimental_Part(Page):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
     def error_message(self, values):
-            if values['intention_amount'] < c(0):
-                return 'The amount cannot be negative.'
+        if values['intention_amount'] < c(0):
+            return 'The amount cannot be negative.'
+        else:
+            if values['intention']:
+                if values['intention_amount'] > Constants.endowment:
+                    return 'The amount cannot be higher than your current balance.'
+                # elif values['intention_amount'] == c(0):
+                #     return 'You cannot simultaneously state "Yes" and set the amount to 0.'
             else:
-                if values['intention']:
-                    if values['intention_amount'] > Constants.endowment:
-                        return 'The amount cannot be higher than your current balance.'
-                    # elif values['intention_amount'] == c(0):
-                    #     return 'You cannot simultaneously state "Yes" and set the amount to 0.'
-                else:
-                    if values['intention_amount'] != c(0):
-                        return 'You cannot simultaneously state "No" and set an amount different than 0.'
+                if values['intention_amount'] != c(0):
+                    return 'You cannot simultaneously state "No" and set an amount different than 0.'
 
 
 class Attention_Check(Page):
@@ -90,7 +90,8 @@ class Survey(Page):
 
 
 class Results(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 page_sequence = [Welcome, Instructions, Confirmatory_Results, Manipulation_Check,
