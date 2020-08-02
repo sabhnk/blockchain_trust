@@ -17,11 +17,11 @@ SESSION_CONFIG_DEFAULTS = dict(
         expiration_hours=7 * 24,
         qualification_requirements=[
             {
-                'QualificationTypeId': "Experiment1_Blockchain_trust_2020_198",
+                'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
                 'Comparator': "DoesNotExist",
             },
             {
-                'QualificationTypeId': "Experiment2_Blockchain_trust_2020_198",
+                'QualificationTypeId': "30TX348SI5MJEMQUUDY0XUUD19Q85N",
                 'Comparator': "DoesNotExist",
             },
             # At least 500 HITs approved
@@ -37,7 +37,7 @@ SESSION_CONFIG_DEFAULTS = dict(
                 'IntegerValues': [95]
             },
         ],
-        grant_qualification_id='Experiment2_Blockchain_trust_2020_198',  # to prevent retakes
+        grant_qualification_id='30TX348SI5MJEMQUUDY0XUUD19Q85N',  # to prevent retakes
     )
 )
 
