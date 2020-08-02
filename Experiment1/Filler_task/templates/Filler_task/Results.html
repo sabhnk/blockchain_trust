@@ -13,6 +13,12 @@
     <br/>
     Your final payoff is: {{ participant.payoff_plus_participation_fee }}
     <br/>
+    {% if participant.vars.correct_confirmatory_questions_PartA %}
+
+    {% elseif %}
+    Your completion code: BLOCKCHAINTRUST105
+    {% endif %}
+    <br/>
     <br/>
     <br/>
     {% next_button %}

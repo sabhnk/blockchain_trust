@@ -24,6 +24,18 @@ SESSION_CONFIG_DEFAULTS = dict(
                 'QualificationTypeId': "Experiment2_Blockchain_trust_2020_198",
                 'Comparator': "DoesNotExist",
             },
+            # At least 500 HITs approved
+            {
+                'QualificationTypeId': "00000000000000000040",
+                'Comparator': "GreaterThanOrEqualTo",
+                'IntegerValues': [500]
+            },
+            # At least 95% of HITs approved
+            {
+                'QualificationTypeId': "000000000000000000L0",
+                'Comparator': "GreaterThanOrEqualTo",
+                'IntegerValues': [95]
+            },
         ],
         grant_qualification_id='Experiment2_Blockchain_trust_2020_198',  # to prevent retakes
     )
@@ -59,3 +71,6 @@ SECRET_KEY = '#hjd89#!rzgt$lp**+!3go*m@-u%y&l--_rhjitxeh2w0-@-rd'
 
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
+
+AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
