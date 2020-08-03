@@ -32,10 +32,10 @@ Therefore, your current balance is {{ player.payoff }}.
 </p>
 
 {% endif %}
-    {% comment %}Your final balance is: {{ participant.payoff }} {% endcomment %}
+    {% comment %} Your final balance is: {{ participant.payoff }} {% endcomment %}
     <br/>
     <br/>
-    Your final payoff is: {{ participant.payoff_plus_participation_fee }}
+    Your final payoff (incl. participation fee) is: {{ participant.payoff_plus_participation_fee }}
     <br/>
     {% if participant.vars.correct_confirmatory_questions_PartB %}
     Your completion code: BLOCKCHAINTRUST008
