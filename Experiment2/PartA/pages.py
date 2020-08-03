@@ -74,7 +74,8 @@ class Survey(Page):
 
 
 class Results(Page):
-    pass
+    def is_displayed(self):
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 page_sequence = [ShuffleWaitPage, Experimental_Part_Send, Wait_for_PlayerA, Experimental_Part_SendBack,

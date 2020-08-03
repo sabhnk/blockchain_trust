@@ -26,5 +26,8 @@ class FillerTest2(Page):
     def before_next_page(self):
         self.participant.payoff += Constants.completion_payoff
 
+class Results(Page):
+    pass
 
-page_sequence = [FillerTest, FillerTest2, Demographics]
+
+page_sequence = [FillerTest, FillerTest2, Demographics, Results]
