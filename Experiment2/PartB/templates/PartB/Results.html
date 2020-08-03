@@ -37,6 +37,13 @@ Therefore, your current balance is {{ player.payoff }}.
     <br/>
     Your final payoff is: {{ participant.payoff_plus_participation_fee }}
     <br/>
+    {% if participant.vars.correct_confirmatory_questions_PartB %}
+    Your completion code: BLOCKCHAINTRUST008
+    {% else %}
+    Your completion code: BLOCKCHAINTRUST264
+    {% endif %}
+    <br/>
+    <br/>
     <br/>
     {% next_button %}
 {% endblock %}
