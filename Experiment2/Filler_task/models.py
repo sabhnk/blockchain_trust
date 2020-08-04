@@ -71,7 +71,8 @@ class Player(BasePlayer):
                  [4, '50,000$ - 74,999$'],
                  [5, '75,000$ - 99,999$'],
                  [6, '100,000$ - 149,999$'],
-                 [7, '150,000$ and above']
+                 [7, '150,000$ and above'],
+                 [8, 'Prefer not to say']
                  ],
         widget=widgets.RadioSelect,
     )

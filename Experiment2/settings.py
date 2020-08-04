@@ -24,6 +24,12 @@ SESSION_CONFIG_DEFAULTS = dict(
                 'QualificationTypeId': "30TX348SI5MJEMQUUDY0XUUD19Q85N",
                 'Comparator': "DoesNotExist",
             },
+            # Only US
+            {
+                'QualificationTypeId': "00000000000000000071",
+                'Comparator': "EqualTo",
+                'LocaleValues': [{'Country': "US"}]
+            },
             # At least 500 HITs approved
             {
                 'QualificationTypeId': "00000000000000000040",
