@@ -25,8 +25,8 @@ class Instructions(Page):
             else:
                 self.participant.vars['correct_confirmatory_questions_PartA'] = True
         else:
-            if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
-                    self.player.confirm_4 != 2):
+            if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 2) or (
+                    self.player.confirm_4 != 3):
                 self.participant.payoff = c(0)
                 self.participant.vars['correct_confirmatory_questions_PartA'] = False
             else:
@@ -90,8 +90,9 @@ class Survey(Page):
 
 
 class Results(Page):
-    def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+    pass
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 page_sequence = [Welcome, Instructions, Confirmatory_Results, Manipulation_Check,
