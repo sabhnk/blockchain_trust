@@ -143,21 +143,21 @@ class Player(BasePlayer):
     )
 
     confirm_3 = models.IntegerField(
-        label='Your payoff directly depends on…?',
-        choices=[
-            [1, '...my own decisions only'],
-            [2, '...my partners decisions only'],
-            [3, '...my own and my partners decision'],
-        ],
-        widget=widgets.RadioSelect
-    )
-
-    confirm_4 = models.IntegerField(
         label='Your transaction details will be visible for…?',
         choices=[
             [1, '...myself only'],
             [2, '...myself and my partner'],
             [3, '...myself, my partner and all other participants (publicly visible)'],
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    confirm_4 = models.IntegerField(
+        label='Your payoff directly depends on…?',
+        choices=[
+            [1, '...my own decisions only'],
+            [2, '...my partners decisions only'],
+            [3, '...my own and my partners decision'],
         ],
         widget=widgets.RadioSelect
     )

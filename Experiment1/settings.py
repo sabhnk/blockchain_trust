@@ -15,22 +15,22 @@ SESSION_CONFIG_DEFAULTS = dict(
         frame_height=500,
         template='global/mturk_template.html',
         minutes_allotted_per_assignment=60,
-        expiration_hours=7 * 24,
+        expiration_hours=5 * 24,
         qualification_requirements=[
-            {
-                'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
-                'Comparator': "DoesNotExist",
-            },
+            # {
+            #     'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
+            #     'Comparator': "Exists",
+            # },
             {
                 'QualificationTypeId': "30TX348SI5MJEMQUUDY0XUUD19Q85N",
-                'Comparator': "DoesNotExist",
+                'Comparator': "Exists",
             },
             # Only US
-            {
-                'QualificationTypeId': "00000000000000000071",
-                'Comparator': "EqualTo",
-                'LocaleValues': [{'Country': "US"}]
-            },
+            # {
+            #     'QualificationTypeId': "00000000000000000071",
+            #     'Comparator': "EqualTo",
+            #     'LocaleValues': [{'Country': "US"}]
+            # },
             # At least 500 HITs approved
             {
                 'QualificationTypeId': "00000000000000000040",
@@ -53,7 +53,7 @@ SESSION_CONFIGS = [
         name='Experiment1',
         display_name="Experiment 1 (Intention)",
         num_demo_participants=100,
-        app_sequence=['PartA', 'Filler_task', 'PartB'],
+        app_sequence=['PartA'],
     ),
 ]
 

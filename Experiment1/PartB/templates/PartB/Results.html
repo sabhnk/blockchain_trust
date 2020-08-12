@@ -7,17 +7,9 @@
 
 {% block content %}
 
-    Thank you for participating!
-
     <br/>
     <br/>
-    Your final payoff (incl. participation fee) is: {{ participant.payoff_plus_participation_fee }}
-    <br/>
-    {% if participant.vars.correct_confirmatory_questions_PartB %}
-    Your completion code: BLOCKCHAINTRUST008
-    {% else %}
-    Your completion code: BLOCKCHAINTRUST264
-    {% endif %}
+    Your payoff (incl. participation fee) is: {{ participant.payoff_plus_participation_fee }}
     <br/>
     <br/>
     <br/>
