@@ -53,7 +53,7 @@ SESSION_CONFIGS = [
         name='Experiment1',
         display_name="Experiment 1 (Intention)",
         num_demo_participants=100,
-        app_sequence=['PartA'],
+        app_sequence=['PartA', 'PartB'],
     ),
 ]
 
