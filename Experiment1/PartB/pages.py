@@ -4,14 +4,15 @@ from .models import Constants
 
 
 class Welcome(Page):
-    def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+    pass
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Instructions(Page):
     # condition-specific
-    def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartA']
 
     # same questions, but answers are condition specific
     form_model = 'player'
@@ -36,8 +37,9 @@ class Instructions(Page):
 
 
 class Confirmatory_Results(Page):
-    def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA']
+    pass
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartA']
 
 
 class Manipulation_Check(Page):
@@ -45,9 +47,11 @@ class Manipulation_Check(Page):
     form_model = 'player'
     form_fields = ['manipulation']
 
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
+    #         'correct_confirmatory_questions_PartA']
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
-            'correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB']
 
 
 class Experimental_Part(Page):
@@ -55,9 +59,12 @@ class Experimental_Part(Page):
     form_model = 'player'
     form_fields = ['intention', 'intention_amount']
 
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
+    #         'correct_confirmatory_questions_PartA']
+
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
-            'correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB']
 
     def error_message(self, values):
         if values['intention_amount'] < c(0):
@@ -78,9 +85,12 @@ class Attention_Check(Page):
     form_model = 'player'
     form_fields = ['attention']
 
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
+    #         'correct_confirmatory_questions_PartA']
+
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
-            'correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB']
 
 
 class Survey(Page):
@@ -88,9 +98,12 @@ class Survey(Page):
     form_model = 'player'
     form_fields = ['pc_1', 'pc_2', 'pc_3', 'benefit_1', 'benefit_2', 'benefit_3', ]
 
+    # def is_displayed(self):
+    #     return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
+    #         'correct_confirmatory_questions_PartA']
+
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartB'] and self.participant.vars[
-            'correct_confirmatory_questions_PartA']
+        return self.participant.vars['correct_confirmatory_questions_PartB']
 
     def before_next_page(self):
         self.participant.payoff += Constants.completion_payoff
