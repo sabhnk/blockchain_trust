@@ -10,6 +10,7 @@ SESSION_CONFIG_DEFAULTS = dict(
     mturk_hit_settings={'keywords': 'bonus, study', 'title': 'Experiment 1', 'description': 'Receive a high bonus for completion.',
                         'frame_height': 500, 'template': 'global/mturk_template.html',
                         'minutes_allotted_per_assignment': 60, 'expiration_hours': 5 * 24,
+                        # TODO: adjust requirements
                         'qualification_requirements': [
                             # {
                             #     'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
@@ -39,7 +40,8 @@ SESSION_CONFIG_DEFAULTS = dict(
                                 'Comparator': "GreaterThanOrEqualTo",
                                 'IntegerValues': [95]
                             },
-                        ], 'grant_qualification_id': '3P1HXW38ULF39NSV32V3NZ34W9K5K3'}
+                        ],
+                        'grant_qualification_id': '3P1HXW38ULF39NSV32V3NZ34W9K5K3'}
 )
 
 SESSION_CONFIGS = [
