@@ -7,45 +7,39 @@ from os import environ
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.01, participation_fee=0.20, doc="",
-    mturk_hit_settings=dict(
-        # adjust the following, if needed.
-        keywords='bonus, study',
-        title='Experiment 1',
-        description='Intention',
-        frame_height=500,
-        template='global/mturk_template.html',
-        minutes_allotted_per_assignment=60,
-        expiration_hours=5 * 24,
-        qualification_requirements=[
-            # {
-            #     'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
-            #     'Comparator': "Exists",
-            # },
-            {
-                'QualificationTypeId': "30TX348SI5MJEMQUUDY0XUUD19Q85N",
-                'Comparator': "Exists",
-            },
-            # Only US
-            # {
-            #     'QualificationTypeId': "00000000000000000071",
-            #     'Comparator': "EqualTo",
-            #     'LocaleValues': [{'Country': "US"}]
-            # },
-            # At least 500 HITs approved
-            {
-                'QualificationTypeId': "00000000000000000040",
-                'Comparator': "GreaterThanOrEqualTo",
-                'IntegerValues': [500]
-            },
-            # At least 95% of HITs approved
-            {
-                'QualificationTypeId': "000000000000000000L0",
-                'Comparator': "GreaterThanOrEqualTo",
-                'IntegerValues': [95]
-            },
-        ],
-        grant_qualification_id='3P1HXW38ULF39NSV32V3NZ34W9K5K3',  # to prevent retakes
-    )
+    mturk_hit_settings={'keywords': 'bonus, study', 'title': 'Experiment 1', 'description': 'Receive a high bonus for completion.',
+                        'frame_height': 500, 'template': 'global/mturk_template.html',
+                        'minutes_allotted_per_assignment': 60, 'expiration_hours': 5 * 24,
+                        'qualification_requirements': [
+                            # {
+                            #     'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
+                            #     'Comparator': "Exists",
+                            # },
+                            {
+                                # nur Teilnehmer von Experiment 2 dürfen teilnehmen
+                                'QualificationTypeId': "30TX348SI5MJEMQUUDY0XUUD19Q85N",
+                                'Comparator': "Exists",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # Only US
+                            # {
+                            #     'QualificationTypeId': "00000000000000000071",
+                            #     'Comparator': "EqualTo",
+                            #     'LocaleValues': [{'Country': "US"}]
+                            # },
+                            # At least 500 HITs approved
+                            {
+                                'QualificationTypeId': "00000000000000000040",
+                                'Comparator': "GreaterThanOrEqualTo",
+                                'IntegerValues': [500]
+                            },
+                            # At least 95% of HITs approved
+                            {
+                                'QualificationTypeId': "000000000000000000L0",
+                                'Comparator': "GreaterThanOrEqualTo",
+                                'IntegerValues': [95]
+                            },
+                        ], 'grant_qualification_id': '3P1HXW38ULF39NSV32V3NZ34W9K5K3'}
 )
 
 SESSION_CONFIGS = [
@@ -53,7 +47,7 @@ SESSION_CONFIGS = [
         name='Experiment1',
         display_name="Experiment 1 (Intention)",
         num_demo_participants=100,
-        app_sequence=['PartA', 'PartB'],
+        app_sequence=['PartA'],
     ),
 ]
 

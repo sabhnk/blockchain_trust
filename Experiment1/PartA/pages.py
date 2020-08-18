@@ -90,6 +90,7 @@ class Survey(Page):
 
 
 class Results(Page):
+    # TODO: Ankündigung PartB
     pass
     # def is_displayed(self):
     #     return self.participant.vars['correct_confirmatory_questions_PartA']

@@ -96,18 +96,18 @@ class Player(BasePlayer):
     )
 
     intention_amount = models.CurrencyField(
-        label="What amount would you send to Player B?",
+        label="What amount would you send to Player B? (If you answered 'No' above, please set the amount to 0)",
     )
 
-    pc_1 = likert7('I am concerned that the information I provide to the blockchain network could be misused.')
+    pc_1 = likert7('I am concerned that the information I provide in this situation could be misused.')
     pc_2 = likert7(
-        'I am concerned that anyone will be able to find private information about me on the blockchain network.')
+        'I am concerned that anyone will be able to find private information about me in this situation.')
     pc_3 = likert7(
-        'I am concerned about submitting information on the blockchain network, because it could be used in a way I did not foresee.')
+        'I am concerned about submitting information in this situation, because it could be used in a way I did not foresee.')
 
-    benefit_1 = likert7('Transacting on the blockchain network offers benefits for me.')
-    benefit_2 = likert7('Transacting on the blockchain network will lead to economic benefits for me.')
-    benefit_3 = likert7('I expect financial benefit form transacting on the blockchain network.')
+    benefit_1 = likert7('Transacting in this situation offers benefits for me.')
+    benefit_2 = likert7('Transacting in this situation will lead to economic benefits for me.')
+    benefit_3 = likert7('I expect financial benefit form transacting in this situation.')
 
     attention = models.IntegerField(
         label='What would be your ideal holiday destination?',

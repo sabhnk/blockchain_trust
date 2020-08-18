@@ -11,6 +11,10 @@
     <br/>
     Your payoff (incl. participation fee) is: {{ participant.payoff_plus_participation_fee }}
     <br/>
+{% if participant.vars.correct_confirmatory_questions_PartA %}
+    COMPLETION CODE: BLOCKCHAIN158TRUST
+{% endif %}
+    <br/>
     <br/>
     <br/>
     {% next_button %}
