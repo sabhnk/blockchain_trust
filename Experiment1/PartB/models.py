@@ -24,7 +24,7 @@ class Constants(BaseConstants):
 
     endowment = c(50)
     completion_payoff = c(10)
-
+    # TODO: copy adjustments from PartA
 
 # Treatment / Control Group
 class Subsession(BaseSubsession):
