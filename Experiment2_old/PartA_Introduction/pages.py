@@ -10,8 +10,6 @@ class Welcome(Page):
 class Instructions(Page):
 
     # condition-specific
-
-
     # same questions, but answers are condition specific
     form_model = 'player'
     form_fields = ['confirm_1', 'confirm_2', 'confirm_3', 'confirm_4']

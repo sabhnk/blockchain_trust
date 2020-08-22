@@ -53,6 +53,8 @@ def likert7(label):
         ],
         widget=widgets.RadioSelect
     )
+
+
 def likert_lowhigh(label):
     return models.IntegerField(
         # users see choice options and answers will be stored as integers
@@ -68,6 +70,8 @@ def likert_lowhigh(label):
         ],
         widget=widgets.RadioSelect
     )
+
+
 # def likert7(label):
 #     return models.IntegerField(
 #         label=label,
@@ -77,11 +81,10 @@ def likert_lowhigh(label):
 
 
 class Player(BasePlayer):
-
-    manipulation = likert_lowhigh('Please rate, from "very low" to "very high", how you see the level of transparency in this study.')
+    manipulation = likert_lowhigh('Please rate how you see the level of transparency in this study.')
 
     confirm_1 = models.IntegerField(
-        label='When you sent 90 ECU to Player B, how much will Player B receive?',
+        label='You are Player A. When you sent 90 ECU to Player B, how much will Player B receive?',
         choices=[
             [1, '90 ECU'],
             [2, '270 ECU'],
@@ -91,7 +94,7 @@ class Player(BasePlayer):
     )
 
     confirm_2 = models.IntegerField(
-        label='When you receive 90 ECU from Player A, how much did Player A send?',
+        label='You are Player B. When you receive 90 ECU from Player A, how much did Player A send?',
         choices=[
             [1, '90 ECU'],
             [2, '270 ECU'],
@@ -101,21 +104,21 @@ class Player(BasePlayer):
     )
 
     confirm_3 = models.IntegerField(
-        label='Your payoff directly depends on…?',
-        choices=[
-            [1, '...my own decisions only'],
-            [2, '...my partners decisions only'],
-            [3, '...my own and my partners decision'],
-        ],
-        widget=widgets.RadioSelect
-    )
-
-    confirm_4 = models.IntegerField(
         label='Your transaction details will be visible for…?',
         choices=[
             [1, '...myself only'],
             [2, '...myself and my partner'],
             [3, '...myself, my partner and all other participants (publicly visible)'],
+        ],
+        widget=widgets.RadioSelect
+    )
+
+    confirm_4 = models.IntegerField(
+        label='Your payoff directly depends on…?',
+        choices=[
+            [1, '...my own decisions only'],
+            [2, '...my partners decisions only'],
+            [3, '...my own and my partners decision'],
         ],
         widget=widgets.RadioSelect
     )

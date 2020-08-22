@@ -14,7 +14,7 @@ SESSION_CONFIG_DEFAULTS = dict(
         frame_height=500,
         template='global/mturk_template.html',
         minutes_allotted_per_assignment=60,
-        expiration_hours=7 * 24,
+        expiration_hours=5 * 24,
         qualification_requirements=[
             {
                 'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
@@ -49,7 +49,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 
 SESSION_CONFIGS = [
     dict(
-        name='Experiment2',
+        name='Experiment2_old',
         display_name="Experiment 2 (Behavior)",
         num_demo_participants=100,
         app_sequence=['PartA_Introduction', 'PartA', 'Filler_task', 'PartB_Introduction', 'PartB']
