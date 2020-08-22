@@ -57,6 +57,7 @@ def likert7(label):
         widget=widgets.RadioSelect
     )
 
+
 def likert_lowhigh(label):
     return models.IntegerField(
         # users see choice options and answers will be stored as integers
@@ -73,6 +74,7 @@ def likert_lowhigh(label):
         widget=widgets.RadioSelect
     )
 
+
 # def likert7(label):
 #     return models.IntegerField(
 #         # users see choice options and answers will be stored as integers
@@ -83,7 +85,6 @@ def likert_lowhigh(label):
 
 
 class Player(BasePlayer):
-
     manipulation = likert_lowhigh('Please rate how you see the level of transparency in this study.')
 
     intention = models.BooleanField(
@@ -152,7 +153,6 @@ class Player(BasePlayer):
         ],
         widget=widgets.RadioSelect
     )
-
 
     confirm_4 = models.IntegerField(
         label='Your payoff directly depends on…?',
