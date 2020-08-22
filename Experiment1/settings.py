@@ -10,16 +10,16 @@ SESSION_CONFIG_DEFAULTS = dict(
     mturk_hit_settings={'keywords': 'bonus, study', 'title': 'Experiment 1', 'description': 'Receive a high bonus for completion.',
                         'frame_height': 500, 'template': 'global/mturk_template.html',
                         'minutes_allotted_per_assignment': 60, 'expiration_hours': 5 * 24,
-                        # TODO: adjust requirements
                         'qualification_requirements': [
-                            # {
-                            #     'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
-                            #     'Comparator': "Exists",
-                            # },
+                            # Testläufe ausschließen
                             {
-                                # nur Teilnehmer von Experiment 2 dürfen teilnehmen
                                 'QualificationTypeId': "30TX348SI5MJEMQUUDY0XUUD19Q85N",
-                                'Comparator': "Exists",
+                                'Comparator': "DoesNotExist",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            {
+                                'QualificationTypeId': "3P1HXW38ULF39NSV32V3NZ34W9K5K3",
+                                'Comparator': "DoesNotExist",
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
                             # Only US
@@ -41,7 +41,8 @@ SESSION_CONFIG_DEFAULTS = dict(
                                 'IntegerValues': [95]
                             },
                         ],
-                        'grant_qualification_id': '3P1HXW38ULF39NSV32V3NZ34W9K5K3'}
+                        # TODO
+                        'grant_qualification_id': 'XXXXXXXX'}
 )
 
 SESSION_CONFIGS = [
