@@ -28,8 +28,6 @@ class Wait_for_PlayerA(WaitPage):
         # do not show for player that did not get sorted into groups due to incorrect answers
         return self.participant.vars['correct_confirmatory_questions_PartA']
 
-    pass
-
 
 class Experimental_Part_SendBack(Page):
     form_model = 'group'
@@ -47,8 +45,8 @@ class Experimental_Part_SendBack(Page):
     def before_next_page(self):
         self.participant.vars['id_in_group_PartA'] = 2
 
-class Wait_for_PlayerB(WaitPage):
 
+class Wait_for_PlayerB(WaitPage):
     def is_displayed(self):
         return self.participant.vars['correct_confirmatory_questions_PartA']
 

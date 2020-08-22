@@ -38,6 +38,7 @@ class Subsession(BaseSubsession):
             # create group
             return [transparent_players[0], transparent_players[1]]
         elif len(nontransparent_players) > 1:
+            # create group
             return [nontransparent_players[0], nontransparent_players[1]]
 
 
