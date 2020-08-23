@@ -61,7 +61,7 @@ SESSION_CONFIG_DEFAULTS = dict(
 SESSION_CONFIGS = [
     dict(
         name='Experiment2',
-        display_name="Experiment 2 (Behavior) Part A",
+        display_name="Experiment 2 (Behavior) Part B",
         num_demo_participants=100,
         app_sequence=['Introduction', 'Main']
     ),
