@@ -35,9 +35,13 @@ class Subsession(BaseSubsession):
         nontransparent_players = [player for player in waiting_players if player.participant.vars['transparent_PartA'] == False]
         # put first player of each list together in one group
         if len(transparent_players) > 1:
+            # assure random assignment to roles Player A and B
+            random.shuffle(transparent_players)
             # create group
             return [transparent_players[1], transparent_players[0]]
         elif len(nontransparent_players) > 1:
+            # assure random assignment to roles Player A and B
+            random.shuffle(nontransparent_players)
             # create group
             return [nontransparent_players[1], nontransparent_players[0]]
 
