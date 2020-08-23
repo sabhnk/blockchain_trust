@@ -7,7 +7,7 @@ from os import environ
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.01, participation_fee=1.00, doc="",
-    mturk_hit_settings={'keywords': 'bonus, study', 'title': 'Experiment 2 Part A (few minutes to complete, additional bonus for completion)', 'description': 'Receive an additional bonus for completion.',
+    mturk_hit_settings={'keywords': 'bonus, study', 'title': 'Experiment 2 Part B (few minutes to complete, additional bonus for completion)', 'description': 'Receive an additional bonus for completion.',
                         'frame_height': 500, 'template': 'global/mturk_template.html',
                         'minutes_allotted_per_assignment': 60, 'expiration_hours': 5 * 24,
                         'qualification_requirements': [
@@ -40,15 +40,21 @@ SESSION_CONFIG_DEFAULTS = dict(
                                 'Comparator': "GreaterThanOrEqualTo",
                                 'IntegerValues': [95]
                             },
-                            # Experiment 2 Part A Participation: EXCLUDE RETAKERS
+                            # Experiment 2 Part A Participation: INCLUDE ONLY FORMER PARTICIPANTS
                             {
                                 'QualificationTypeId': "30IMA0M1DBV3KT3P2VV42SCTFVOOUP",
+                                'Comparator': "Exists",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # Experiment 2 Part B Participation: EXCLUDE RETAKERS
+                            {
+                                'QualificationTypeId': "3BIT4H6AA7JC3S273ZARAJOR45X5IU",
                                 'Comparator': "DoesNotExist",
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
                         ],
-                        # Experiment 2 Part A Participation
-                        'grant_qualification_id': '30IMA0M1DBV3KT3P2VV42SCTFVOOUP'}
+                        # Experiment 2 Part B Participation
+                        'grant_qualification_id': '3BIT4H6AA7JC3S273ZARAJOR45X5IU'}
 )
 
 
