@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Experiment
+{% endblock %}
+
+{% block content %}
+    
+    Your role is <b>Player B</b>.
+    {% if participant.vars.transparent_PartA %}
+    Your pseudonym: je891hu9l
+    {% endif %}
+    <br />
+
+    <br />
+    Player A sent you {{group.sent_amount}}. Your current balance is: {{tripled_amount}}
+
+    <br />
+    <br />
+    <br />
+    {% formfield group.sent_back_amount %}
+
+
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}
