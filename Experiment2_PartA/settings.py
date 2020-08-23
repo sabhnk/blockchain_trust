@@ -7,7 +7,7 @@ from os import environ
 
 SESSION_CONFIG_DEFAULTS = dict(
     real_world_currency_per_point=0.01, participation_fee=1.00, doc="",
-    mturk_hit_settings={'keywords': 'bonus, study', 'title': 'Experiment 2', 'description': 'Receive an additional bonus for completion.',
+    mturk_hit_settings={'keywords': 'bonus, study', 'title': 'Experiment 2 Part A', 'description': 'Receive an additional bonus for completion.',
                         'frame_height': 500, 'template': 'global/mturk_template.html',
                         'minutes_allotted_per_assignment': 60, 'expiration_hours': 5 * 24,
                         'qualification_requirements': [
