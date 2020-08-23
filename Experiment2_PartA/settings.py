@@ -40,6 +40,12 @@ SESSION_CONFIG_DEFAULTS = dict(
                                 'Comparator': "GreaterThanOrEqualTo",
                                 'IntegerValues': [95]
                             },
+                            # Experiment 2 Part A Participation: EXCLUDE RETAKERS
+                            {
+                                'QualificationTypeId': "30IMA0M1DBV3KT3P2VV42SCTFVOOUP",
+                                'Comparator': "DoesNotExist",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
                         ],
                         # Experiment 2 Part A Participation
                         'grant_qualification_id': '30IMA0M1DBV3KT3P2VV42SCTFVOOUP'}
