@@ -79,7 +79,7 @@ class Wait_for_PlayerB(WaitPage):
     body_text = "Please wait for the other Player. Information from the other Player is needed to calculate your payoff."
 
     def is_displayed(self):
-        return self.participant.vars['correct_confirmatory_questions_PartA'] and self.participant.vars['intimeB']
+        return self.participant.vars['correct_confirmatory_questions_PartA']
 
     after_all_players_arrive = 'set_payoffs'
 
