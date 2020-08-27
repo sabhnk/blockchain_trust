@@ -17,19 +17,51 @@ class Instructions(Page):
     # if answers are wrong, set payout to 10
     def before_next_page(self):
         if self.participant.vars['transparent_PartA']:
-            if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 3) or (
-                    self.player.confirm_4 != 3):
+            # alle Antworten sind richtig
+            if (self.player.confirm_1 == 2 and self.player.confirm_2 == 3 and self.player.confirm_3 == 3 and self.player.confirm_4 == 3):
                 # self.participant.payoff = c(10)
-                self.participant.vars['correct_confirmatory_questions_PartA'] = False
-            else:
                 self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 1,2,3 richtig
+            elif (self.player.confirm_1 == 2 and self.player.confirm_2 == 3 and self.player.confirm_3 == 3):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 1,2,4 richtig
+            elif (self.player.confirm_1 == 2 and self.player.confirm_2 == 3 and self.player.confirm_4 == 3):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 1,3,4 richtig
+            elif (self.player.confirm_1 == 2 and self.player.confirm_3 == 3 and self.player.confirm_4 == 3):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 2,3,4 richtig
+            elif (self.player.confirm_2 == 3 and self.player.confirm_3 == 3 and self.player.confirm_4 == 3):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            else:
+                self.participant.vars['correct_confirmatory_questions_PartA'] = False
         else:
-            if (self.player.confirm_1 != 2) or (self.player.confirm_2 != 3) or (self.player.confirm_3 != 2) or (
-                    self.player.confirm_4 != 3):
+            # alle Antworten sind richtig
+            if (self.player.confirm_1 == 2 and self.player.confirm_2 == 3 and self.player.confirm_3 == 2 and self.player.confirm_4 == 3):
                 # self.participant.payoff = c(10)
-                self.participant.vars['correct_confirmatory_questions_PartA'] = False
-            else:
                 self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 1,2,3 richtig
+            elif (self.player.confirm_1 == 2 and self.player.confirm_2 == 3 and self.player.confirm_3 == 2):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 1,2,4 richtig
+            elif (self.player.confirm_1 == 2 and self.player.confirm_2 == 3 and self.player.confirm_4 == 3):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 1,3,4 richtig
+            elif (self.player.confirm_1 == 2 and self.player.confirm_3 == 2 and self.player.confirm_4 == 3):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            # Antworten 2,3,4 richtig
+            elif (self.player.confirm_2 == 3 and self.player.confirm_3 == 2 and self.player.confirm_4 == 3):
+                # self.participant.payoff = c(10)
+                self.participant.vars['correct_confirmatory_questions_PartA'] = True
+            else:
+                self.participant.vars['correct_confirmatory_questions_PartA'] = False
 
 
 class Confirmatory_Results(Page):
