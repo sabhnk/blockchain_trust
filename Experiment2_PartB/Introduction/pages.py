@@ -4,8 +4,11 @@ from .models import Constants
 
 
 class Welcome(Page):
-    pass
-
+    def before_next_page(self):
+        if self.participant.vars['transparent_PartA']:
+            self.player.transparent = True
+        else:
+            self.player.transparent = False
 
 class Instructions(Page):
 

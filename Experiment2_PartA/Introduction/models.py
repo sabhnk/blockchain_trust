@@ -74,6 +74,7 @@ def likert_lowhigh(label):
 
 
 class Player(BasePlayer):
+    transparent = models.BooleanField()
     manipulation = likert_lowhigh('Please rate how you see the level of transparency in this study.')
 
     confirm_1 = models.IntegerField(
