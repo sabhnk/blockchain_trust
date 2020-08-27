@@ -22,39 +22,48 @@ SESSION_CONFIG_DEFAULTS = dict(
                                 'Comparator': "DoesNotExist",
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
-                            # Only US
-                            # {
-                            #     'QualificationTypeId': "00000000000000000071",
-                            #     'Comparator': "EqualTo",
-                            #     'LocaleValues': [{'Country': "US"}]
-                            # },
-                            # At least 500 HITs approved
-                            {
-                                'QualificationTypeId': "00000000000000000040",
-                                'Comparator': "GreaterThanOrEqualTo",
-                                'IntegerValues': [500]
-                            },
-                            # At least 95% of HITs approved
-                            {
-                                'QualificationTypeId': "000000000000000000L0",
-                                'Comparator': "GreaterThanOrEqualTo",
-                                'IntegerValues': [95]
-                            },
-                            # Experiment 2 Part A Participation: INCLUDE ONLY FORMER PARTICIPANTS
+                            # Experiment 2 Part A Participation: EXCLUDE RETAKERS (TL1)
                             {
                                 'QualificationTypeId': "30IMA0M1DBV3KT3P2VV42SCTFVOOUP",
-                                'Comparator': "Exists",
+                                'Comparator': "DoesNotExist",
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
-                            # Experiment 2 Part B Participation: EXCLUDE RETAKERS
+                            # Experiment 2 Part B Participation: EXCLUDE RETAKERS (TL1)
                             {
                                 'QualificationTypeId': "3BIT4H6AA7JC3S273ZARAJOR45X5IU",
                                 'Comparator': "DoesNotExist",
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
+                            # Only US
+                            {
+                                'QualificationTypeId': "00000000000000000071",
+                                'Comparator': "EqualTo",
+                                'LocaleValues': [{'Country': "US"}],
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # At least 500 HITs approved
+                            {
+                                'QualificationTypeId': "00000000000000000040",
+                                'Comparator': "GreaterThanOrEqualTo",
+                                'IntegerValues': [500],
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # At least 95% of HITs approved
+                            {
+                                'QualificationTypeId': "000000000000000000L0",
+                                'Comparator': "GreaterThanOrEqualTo",
+                                'IntegerValues': [95],
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # TL2: Experiment 2 Part A Participation: INCLUDE ONLY FORMER PARTICIPANTS
+                            {
+                                'QualificationTypeId': "31UNB3YYU1I0S372E7SMSNHP5VRGT4",
+                                'Comparator': "Exists",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
                         ],
-                        # Experiment 2 Part B Participation
-                        'grant_qualification_id': '3BIT4H6AA7JC3S273ZARAJOR45X5IU'}
+                        # TL2: Experiment 2 Part B Participation
+                        'grant_qualification_id': '3F9BH0EJURB1HUD1V1CP41EQI4CMKC'}
 )
 
 
