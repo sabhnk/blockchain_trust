@@ -8,7 +8,7 @@
 
 
     {% if participant.vars.correct_confirmatory_questions_PartA %}
-    Your answers were correct.
+    You can now proceed to the experiment!
 
 
     {#    if answers are not correct#}
@@ -22,37 +22,23 @@
 
 
 {% block content %}
-
+    <br />
 {% if participant.vars.correct_confirmatory_questions_PartA %}
 
-
-
-
-    <br />
-    You can now proceed to the experiment!
-
-
-    <br />
-    <br />
-    <br />
+Please click "Next".
 
 
 {#    if answers are not correct#}
 {% else %}
 
-
-
-    <br />
     Unfortunately, your answers were not entirely correct.
 
 
-    <br />
-    <br />
-    <br />
-
 {% endif %}
 
-
+    <br />
+    <br />
+    <br />
     {% next_button %}
 
 {% endblock %}
