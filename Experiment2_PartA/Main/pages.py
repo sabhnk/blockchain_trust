@@ -36,7 +36,7 @@ class Wait_for_PlayerA(WaitPage):
 
 
 class Experimental_Part_SendBack(Page):
-    timeout_seconds = 60
+    # timeout_seconds = 60
 
     form_model = 'group'
     form_fields = ['sent_back_amount']
