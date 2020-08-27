@@ -13,7 +13,7 @@ import random
 author = 'Sabrina Hinkerohe'
 
 doc = """
-Experiment 2 (Behavior) : Part A
+Experiment 2 (Behavior) : Part B
 """
 
 
@@ -77,21 +77,21 @@ class Player(BasePlayer):
     manipulation = likert_lowhigh('Please rate how you see the level of transparency in this study.')
 
     confirm_1 = models.IntegerField(
-        label='You are Player A. When you sent 90 ECU to Player B, how much will Player B receive?',
+        label='You are Player A. When you sent 300 ECU to Player B, how much will Player B receive?',
         choices=[
-            [1, '90 ECU'],
-            [2, '270 ECU'],
-            [3, '30 ECU'],
+            [1, '300 ECU'],
+            [2, '900 ECU'],
+            [3, '100 ECU'],
         ],
         widget=widgets.RadioSelect
     )
 
     confirm_2 = models.IntegerField(
-        label='You are Player B. When you receive 90 ECU from Player A, how much did Player A send?',
+        label='You are Player B. When you receive 300 ECU from Player A, how much did Player A send?',
         choices=[
-            [1, '90 ECU'],
-            [2, '270 ECU'],
-            [3, '30 ECU'],
+            [1, '300 ECU'],
+            [2, '900 ECU'],
+            [3, '100 ECU'],
         ],
         widget=widgets.RadioSelect
     )
