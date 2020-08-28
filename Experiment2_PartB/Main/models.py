@@ -13,7 +13,7 @@ import random
 author = 'Sabrina Hinkerohe'
 
 doc = """
-Experiment 2 (Behavior) : Part A
+Experiment 2 (Behavior) : Part B
 """
 
 
@@ -53,6 +53,13 @@ class Group(BaseGroup):
     sent_back_amount = models.CurrencyField(
         label="How much do you want to send back?"
     )
+
+    def sent_amount_choices(self):
+        return currency_range(
+            c(0),
+            Constants.endowment,
+            c(1)
+        )
 
     def sent_back_amount_choices(self):
         return currency_range(
