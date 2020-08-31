@@ -107,7 +107,6 @@ class Player(BasePlayer):
         else:
             return 'recipient'
 
-    manipulation = likert7('The setting of this financial transaction makes me feel transparent.')
     pc_1 = likert7('I am concerned that the information I provide in this situation could be misused.')
     pc_2 = likert7(
         'I am concerned that anyone will be able to find private information about me in this situation.')
