@@ -77,23 +77,33 @@ class Player(BasePlayer):
     transparent = models.BooleanField()
     manipulation = likert_lowhigh('Please rate how you see the level of transparency in this study.')
 
-    confirm_1 = models.IntegerField(
-        label='You are Player A. When you sent 300 ECU to Player B, how much will Player B receive?',
-        choices=[
-            [1, '300 ECU'],
-            [2, '900 ECU'],
-            [3, '100 ECU'],
-        ],
-        widget=widgets.RadioSelect
-    )
+    # confirm_1 = models.IntegerField(
+    #     label='You are Player A. When you send 300 ECU to Player B, how much will Player B receive?',
+    #     choices=[
+    #         [1, '300 ECU'],
+    #         [2, '900 ECU'],
+    #         [3, '100 ECU'],
+    #     ],
+    #     widget=widgets.RadioSelect
+    # )
+    #
+    # confirm_2 = models.IntegerField(
+    #     label='You are Player B. When you receive 300 ECU from Player A, how much did Player A send?',
+    #     choices=[
+    #         [1, '300 ECU'],
+    #         [2, '900 ECU'],
+    #         [3, '100 ECU'],
+    #     ],
+    #     widget=widgets.RadioSelect
+    # )
 
-    confirm_2 = models.IntegerField(
-        label='You are Player B. When you receive 300 ECU from Player A, how much did Player A send?',
+    confirm_5 = models.IntegerField(
+        label='What is the multiplier that is applied to every amount, that Player A sends to Player B?',
         choices=[
-            [1, '300 ECU'],
-            [2, '900 ECU'],
-            [3, '100 ECU'],
-        ],
+            [1, 'The amount is doubled ( x2 )'],
+            [2, 'The amount is tripled ( x3 )'],
+            [3, 'The amount stays the same ( x1 )'],
+            ],
         widget=widgets.RadioSelect
     )
 
