@@ -11,6 +11,27 @@ SESSION_CONFIG_DEFAULTS = dict(
                         'frame_height': 500, 'template': 'global/mturk_template.html',
                         'minutes_allotted_per_assignment': 60, 'expiration_hours': 5 * 24,
                         'qualification_requirements': [
+                            # Only US
+                            {
+                                'QualificationTypeId': "00000000000000000071",
+                                'Comparator': "EqualTo",
+                                'LocaleValues': [{'Country': "US"}],
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # At least 500 HITs approved
+                            {
+                                'QualificationTypeId': "00000000000000000040",
+                                'Comparator': "GreaterThanOrEqualTo",
+                                'IntegerValues': [500],
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # At least 95% of HITs approved
+                            {
+                                'QualificationTypeId': "000000000000000000L0",
+                                'Comparator': "GreaterThanOrEqualTo",
+                                'IntegerValues': [95],
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
                             # Testläufe ausschließen
                             {
                                 'QualificationTypeId': "30TX348SI5MJEMQUUDY0XUUD19Q85N",
@@ -34,36 +55,33 @@ SESSION_CONFIG_DEFAULTS = dict(
                                 'Comparator': "DoesNotExist",
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
-                            # Only US
-                            {
-                                'QualificationTypeId': "00000000000000000071",
-                                'Comparator': "EqualTo",
-                                'LocaleValues': [{'Country': "US"}],
-                                'ActionsGuarded': "DiscoverPreviewAndAccept",
-                            },
-                            # At least 500 HITs approved
-                            {
-                                'QualificationTypeId': "00000000000000000040",
-                                'Comparator': "GreaterThanOrEqualTo",
-                                'IntegerValues': [500],
-                                'ActionsGuarded': "DiscoverPreviewAndAccept",
-                            },
-                            # At least 95% of HITs approved
-                            {
-                                'QualificationTypeId': "000000000000000000L0",
-                                'Comparator': "GreaterThanOrEqualTo",
-                                'IntegerValues': [95],
-                                'ActionsGuarded': "DiscoverPreviewAndAccept",
-                            },
-                            # TL2: Experiment 2 Part A Participation: INCLUDE ONLY FORMER PARTICIPANTS
+                            # Experiment 2 Part A Participation: EXCLUDE RETAKERS (TL2)
                             {
                                 'QualificationTypeId': "31UNB3YYU1I0S372E7SMSNHP5VRGT4",
+                                'Comparator': "DoesNotExist",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # Experiment 2 Part B Participation: EXCLUDE RETAKERS (TL2)
+                            {
+                                'QualificationTypeId': "3F9BH0EJURB1HUD1V1CP41EQI4CMKC",
+                                'Comparator': "DoesNotExist",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # TL3: Experiment 2 Part A Participation: INCLUDE ONLY FORMER PARTICIPANTS
+                            {
+                                'QualificationTypeId': "3J9ZK359J7YYP7J5H91S3N9L98W13B",
                                 'Comparator': "Exists",
+                                'ActionsGuarded': "DiscoverPreviewAndAccept",
+                            },
+                            # Experiment 2 Part B Participation: EXCLUDE RETAKERS (TL3)
+                            {
+                                'QualificationTypeId': "3RESO6GZAWLONQBIYJTFZ4Q2919HHU",
+                                'Comparator': "DoesNotExist",
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
                         ],
                         # TL2: Experiment 2 Part B Participation
-                        'grant_qualification_id': '3F9BH0EJURB1HUD1V1CP41EQI4CMKC'}
+                        'grant_qualification_id': '3RESO6GZAWLONQBIYJTFZ4Q2919HHU'}
 )
 
 
