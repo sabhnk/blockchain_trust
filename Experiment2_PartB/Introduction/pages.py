@@ -39,6 +39,7 @@ class Instructions(Page):
                 self.participant.vars['correct_confirmatory_questions_PartA'] = True
             else:
                 self.participant.vars['correct_confirmatory_questions_PartA'] = False
+                self.participant.payoff = c(0)
         else:
             # alle Antworten sind richtig
             if (self.player.confirm_3 == 2 and self.player.confirm_4 == 3 and self.player.confirm_5 == 2):
@@ -58,6 +59,7 @@ class Instructions(Page):
                 self.participant.vars['correct_confirmatory_questions_PartA'] = True
             else:
                 self.participant.vars['correct_confirmatory_questions_PartA'] = False
+                self.participant.payoff = c(0)
 
     # 4 question fields
     # if answers are wrong, set payout to 10
