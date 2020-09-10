@@ -80,7 +80,7 @@ SESSION_CONFIG_DEFAULTS = dict(
                                 'ActionsGuarded': "DiscoverPreviewAndAccept",
                             },
                         ],
-                        # TL2: Experiment 2 Part B Participation
+                        # TL3: Experiment 2 Part B Participation
                         'grant_qualification_id': '3RESO6GZAWLONQBIYJTFZ4Q2919HHU'}
 )
 
