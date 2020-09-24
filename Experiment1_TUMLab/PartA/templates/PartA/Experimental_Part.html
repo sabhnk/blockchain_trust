@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    
+    You are <b>Player A</b>.
+    {% if participant.vars.transparent_PartA %}
+    Your pseudonym: hg647j8ek
+    {% endif %}
+    <br />
+
+    <br />
+    Your current balance is: {{Constants.endowment}}
+
+    <br />
+    <br />
+    <br />
+    Please consider the following two questions.
+    <br />
+    <br />
+    <br />
+
+
+    {% formfield player.intention %}
+    <br />
+    <br />
+
+
+    {% formfield player.intention_amount %}
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

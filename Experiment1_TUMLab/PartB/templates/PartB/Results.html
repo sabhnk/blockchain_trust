@@ -1,0 +1,26 @@
+{% extends "global/Page_PartB.html" %}
+{% load otree static %}
+
+{% block title %}
+    Thank you!
+{% endblock %}
+
+{% block content %}
+
+    You completed Part 2.
+    <br/>
+    <br/>
+    Your <b>completion code</b>: 2020-XX-XXXXXXX
+    <br/>
+    <br/>
+    {% formfield player.code_confirmation %}
+    <br/>
+    <br/>
+    Please click "Next" to finish the experiment.
+    <br/>
+    <br/>
+    <br/>
+    {% next_button %}
+{% endblock %}
+
+
