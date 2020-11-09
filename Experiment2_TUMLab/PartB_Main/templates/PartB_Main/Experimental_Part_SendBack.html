@@ -1,0 +1,30 @@
+{% extends "global/Page_PartB.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+    
+    You are <b>Player B</b>.
+    {% if participant.vars.transparent_PartB %}
+    Your pseudonym: je891hu9l
+    {% endif %}
+    <br />
+
+    <br />
+    Player A sent you {{group.sent_amount}}. Your current balance is: {{tripled_amount}}
+
+    <br />
+    <br />
+    <br />
+    {% formfield group.sent_back_amount %}
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

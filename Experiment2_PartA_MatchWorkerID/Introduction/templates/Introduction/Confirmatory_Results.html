@@ -1,0 +1,44 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+
+{% block title %}
+
+
+    {% if participant.vars.correct_confirmatory_questions_PartA %}
+    You can now proceed to the experiment!
+
+
+    {#    if answers are not correct#}
+    {% else %}
+    Sorry.
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+    <br />
+{% if participant.vars.correct_confirmatory_questions_PartA %}
+
+Please click "Next".
+
+
+{#    if answers are not correct#}
+{% else %}
+
+    Unfortunately, your answers were not entirely correct.
+
+
+{% endif %}
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

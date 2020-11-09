@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Your Choice
+{% endblock %}
+
+{% block content %}
+    
+    You are <b>Player A</b>.
+    {% if participant.vars.transparent_PartA %}
+    Your pseudonym: hg647j8ek
+    {% endif %}
+    <br />
+
+    <br />
+    Your current balance is: {{Constants.endowment}}
+
+    <br />
+    <br />
+    <br />
+    {% formfields %}
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

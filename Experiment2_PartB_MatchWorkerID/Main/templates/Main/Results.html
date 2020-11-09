@@ -1,0 +1,64 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Thank you!
+{% endblock %}
+
+{% block content %}
+
+    Thank you for participating!
+    <br/>
+    <br/>
+
+    {% if participant.vars.correct_confirmatory_questions_PartA %}
+        {% if participant.vars.intimeB %}
+            {% if player.id_in_group == 1 %}
+
+                Your initial balance was {{Constants.endowment}}. <br/>
+                You sent {{ group.sent_amount }} to Player B .<br/>
+                Player B returned {{ group.sent_back_amount }}.
+
+            {% else %}
+
+                Player A sent you {{ group.sent_amount }}, which was multiplied with factor {{Constants.multiplication_factor}}. <br/>
+                You returned {{ group.sent_back_amount }}.
+
+            {% endif %}
+
+
+
+            <br/>
+            Therefore, your final balance is {{ participant.payoff }}.
+            <br/>
+            <br/>
+
+            Your payoff (incl. participation fee) is: {{ participant.payoff_plus_participation_fee }}
+            <br/>
+            <br/>
+            <br/>
+            COMPLETION CODE: 7896467
+            <br/>
+<!--            By successfully completing this experiment you gained the qualification for another experiment of this kind.-->
+<!--            It will be unlocked in the near future and will be rewarded with a potentially even higher payoff.-->
+
+        {% else %}
+        Timeout.
+        <br/>
+        COMPLETION CODE: 3647
+        {% endif %}
+    {% else %}
+        <br/>
+<!--        Confirmatory Questions falsch-->
+        COMPLETION CODE: 278642
+
+    {% endif %}
+
+    <br/>
+    <br/>
+    <br/>
+
+    {% next_button %}
+{% endblock %}
+
+

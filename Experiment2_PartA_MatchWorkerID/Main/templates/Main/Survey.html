@@ -1,0 +1,53 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Survey
+{% endblock %}
+
+{% block content %}
+
+
+    In the following, please answer the questions and rate the statements on a scale from "I strongly disagree" (1) to "I strongly agree" (7).
+    Please be honest and give the first answer that intuitively comes to your mind.
+    <br />
+    <br />
+    <br />
+
+
+    <table  class="table">
+
+        <tr>
+            <th style="border-top-style: none"> </th>
+{#            <th> </th>#}
+            <th style="text-align:center; border-top-style:none"> I<br />strongly<br />disagree</th>
+            <th style=" border-top-style: none"></th>
+            <th style=" border-top-style: none"></th>
+            <th style=" border-top-style: none"></th>
+            <th style=" border-top-style: none"></th>
+            <th style=" border-top-style: none"></th>
+            <th style="text-align:center; border-top-style: none">I<br />strongly<br />agree</th>
+        </tr>
+
+        {% for field in form %}
+        <tr>
+            <td  style="width:44%; border-right-style:solid; border-right-width: thin; border-right-color: lightgrey">{{ field.label }}</td>
+
+
+            {% for choice in field %}
+                <td width="7%"; align="center";>{{ choice.tag }}</td>
+            {% endfor %}
+        </tr>
+
+        {% endfor %}
+    </table>
+
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

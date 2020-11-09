@@ -1,0 +1,68 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+
+{% block title %}
+
+    {% if participant.vars.correct_confirmatory_questions_PartA %}
+    You can now proceed to the experiment!
+    {#    if answers are not correct#}
+    {% else %}
+    Sorry.
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+   {% if participant.vars.correct_confirmatory_questions_PartA %}
+
+        {% if player.confirm_1 != 2 %}
+            You gave one incorrect answer. Please be aware of the following:<br />
+            <br />
+            <b>Question</b>: You are Player A. When you sent 300 ECU to Player B, how much will Player B receive?<br />
+            <b>Correct answer</b>: 900 ECU<br />
+        {% elif player.confirm_2 != 3 %}
+            You gave one incorrect answer. Please be aware of the following:<br />
+            <br />
+            <b>Question</b>: You are Player B. When you receive 300 ECU from Player A, how much did Player A send?<br />
+            <b>Correct answer</b>: 100 ECU<br />
+        {% elif player.confirm_4 != 3 %}
+            You gave one incorrect answer. Please be aware of the following:<br />
+            <br />
+            <b>Question</b>: Your payoff directly depends on…?<br />
+            <b>Correct answer</b>: ...my own and my partners decision<br />
+        {% elif participant.vars.transparent_PartA and player.confirm_3 != 3 %}
+            You gave one incorrect answer. Please be aware of the following:<br />
+            <br />
+            <b>Question</b>: Your transaction details will be visible for…?<br />
+            <b>Correct answer</b>: ...myself, my partner and all other participants (publicly visible)<br />
+        {% elif participant.vars.transparent_PartA == False and player.confirm_3 != 2 %}
+            You gave one incorrect answer. Please be aware of the following:<br />
+            <br />
+            <b>Question</b>: Your transaction details will be visible for…?<br />
+            <b>Correct answer</b>: ...myself and my partner<br />
+        {% else %}
+            Your answers were correct.
+        {% endif %}
+
+
+{#    if answers are not correct#}
+{% else %}
+
+    <br />
+    Unfortunately, you gave too many incorrect answers.
+
+{% endif %}
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

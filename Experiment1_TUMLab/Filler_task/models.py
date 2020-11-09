@@ -15,7 +15,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
-    completion_payoff = c(10)
+    completion_payoff = c(0)
 
 
 class Subsession(BaseSubsession):
