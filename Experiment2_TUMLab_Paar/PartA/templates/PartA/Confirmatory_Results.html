@@ -1,0 +1,32 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+
+{% block title %}
+
+
+    {% if player.correct_confirmatory_questions %}
+    Your answers were correct.
+
+
+    {#    if answers are not correct#}
+    {% else %}
+
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+{% block content %}
+
+    Please click "Next" to continue.
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}

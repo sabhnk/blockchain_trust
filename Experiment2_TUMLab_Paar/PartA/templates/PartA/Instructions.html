@@ -1,0 +1,91 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+    Instructions - Part 1
+{% endblock %}
+
+{% block content %}
+
+
+    The currency used is ECU (Experimental Currency Unit).
+    The exchange rate is as follows.
+
+    <br />
+    <br />
+    1 ECU = €{{session.real_world_currency_per_point}}
+    <br />
+    <br />
+
+    All participants are divided into two groups, A and B.
+    <br />
+    Player A is granted an initial amount.
+    From this amount Player A can send a part (between zero and total amount) to their partner from group B.
+    <br />
+    This amount is <b>tripled</b> by the experimenter and passed on to Player B.
+    <br />
+    Player B then decides how much of the tripled amount they want to send back to Player A.
+    <br />
+    <br />
+    <br />
+    The transaction takes place exclusively between you and your partner. The only influence from outside comes from the experimenter in tripling the amount.
+    <br />
+    <br />
+    <br />
+    The payoff depends on <b>your decision and the decision of your partner</b>.
+    <br />
+    <br />
+    <u>Player A</u>: Initial amount – amount sent to Player B + amount received back from Player B
+    <br />
+    <u>Player B</u>: Initial amount + triple the amount sent from Player A – amount sent back to Player A
+    <br />
+    <br />
+    <br />
+
+    {% comment %} treatment specific instruction {% endcomment %}
+
+    {% if player.transparent %}
+        Each participant gets a pseudonym, which they keep throughout the whole experiment. The transaction takes place on a public blockchain network. This means the following transaction details are <b>publicly visible and permanently stored</b>:
+        <br />
+        •	pseudonyms of all senders and recipients
+        <br />
+        •	amount
+        <br />
+        •	timestamp of the transaction
+        <br />
+        <br />
+        Examples of 4 completed transactions:
+
+        <br />
+        <br />
+        <img src="{% static 'Transaction_Overview.png' %}"/>
+
+    {% else %}
+    Your transaction details are only <b>visible for you and your transaction partner</b>.
+    {% endif %}
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <b>Confirmatory Questions</b>
+    <br />
+    <br />
+    For the further course of the experiment it is necessary that you have understood the situation described above.
+    The questions refer to the situation described for the experiment. <b>Please read the instructions again if needed</b>!
+    <br />
+    <br />
+    {% formfield player.confirm_5 %}
+    {% formfield player.confirm_4 %}
+    {% formfield player.confirm_3 %}
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+
+{% endblock %}

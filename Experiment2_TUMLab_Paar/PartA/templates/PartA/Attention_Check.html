@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+
+    To continue with the experiment, we need some additional information about you.
+    We want to make sure that you read the information carefully and do not just click through as quickly as possible.
+    Therefore, you can simply ignore the following questions and click on the Next button.
+    <br />
+    <br />
+    <br />
+    {% formfield player.attention %}
+
+
+    <br />
+    <br />
+    <br />
+    {% next_button %}
+
+{% endblock %}
