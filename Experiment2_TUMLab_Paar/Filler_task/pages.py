@@ -10,13 +10,13 @@ class Demographics(Page):
 
 
 class FillerTest(Page):
-    timeout_seconds = 90
+    # timeout_seconds = 90
     form_model = 'player'
     form_fields = ['crt_bat', 'teaser1', 'crt_widget']
 
 
 class FillerTest2(Page):
-    timeout_seconds = 90
+    # timeout_seconds = 90
     form_model = 'player'
     form_fields = ['teaser2', 'crt_lake', 'teaser3']
 

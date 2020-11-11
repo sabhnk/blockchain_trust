@@ -13,12 +13,12 @@ import random
 author = 'Sabrina Hinkerohe'
 
 doc = """
-Experiment 2 (Behavior) : Part B
+Experiment 2 (Behavior)
 """
 
 
 class Constants(BaseConstants):
-    name_in_url = 'Experiment2_PartB'
+    name_in_url = 'Experiment2_PartA'
     players_per_group = 2
     num_rounds = 1
 
@@ -29,32 +29,31 @@ class Constants(BaseConstants):
 
 # Treatment / Control Group
 class Subsession(BaseSubsession):
-
-    # is executed each time, a player arrives on the wait page
-    def group_by_arrival_time_method(self, waiting_players):
-        # put waiting players onto two separate lists according to attribute transparent_PartB
-        players_role1 = [player for player in waiting_players if player.participant.vars['id_in_group_PartA'] == 1]
-        players_role2 = [player for player in waiting_players if player.participant.vars['id_in_group_PartA'] == 2]
-        # put first player of each list together in one group
-        if len(players_role1) > 0 and len(players_role2) > 0:
-            # create group
-            return [players_role1[0], players_role2[0]]
-        #TODO: funktioniert der Zugriff auf Gruppen hier?
+    # creating_session gets executed for each round independently
+    def creating_session(self):
         for group in self.get_groups():
             group.transparent = random.choice([True, False])
         # self.get_players(): Returns a list of all the players in the subsession.
-        for player in self.get_players():
-            self.player.correct_confirmatory_questions = False
+        # for player in self.get_players():
+        #     player.correct_confirmatory_questions = False
 
 
 class Group(BaseGroup):
     transparent = models.BooleanField()
+
     sent_amount = models.CurrencyField(
         label="How much do you want to send to Player B?"
     )
     sent_back_amount = models.CurrencyField(
         label="How much do you want to send back to Player A?"
     )
+
+    def sent_amount_choices(self):
+        return currency_range(
+            c(0),
+            Constants.endowment,
+            c(1)
+        )
 
     def sent_back_amount_choices(self):
         return currency_range(
@@ -68,6 +67,8 @@ class Group(BaseGroup):
         playerB = self.get_player_by_id(2)
         playerA.participant.payoff += Constants.endowment - self.sent_amount + self.sent_back_amount
         playerB.participant.payoff += self.sent_amount * Constants.multiplication_factor - self.sent_back_amount
+
+
 
 
 def likert7(label):
@@ -86,7 +87,6 @@ def likert7(label):
         widget=widgets.RadioSelect
     )
 
-
 def likert_lowhigh(label):
     return models.IntegerField(
         # users see choice options and answers will be stored as integers
@@ -102,6 +102,7 @@ def likert_lowhigh(label):
         ],
         widget=widgets.RadioSelect
     )
+
 
 class Player(BasePlayer):
     transparent = models.BooleanField()
@@ -138,14 +139,6 @@ class Player(BasePlayer):
         widget=widgets.RadioSelect
     )
 
-    code_confirmation = models.BooleanField(
-        label='I understand that without the code I cannot collect my payoff.',
-        choices=[
-            [True, 'Yes']
-        ],
-        widget=widgets.RadioSelect
-    )
-
     def role(self):
         if self.id_in_group == 1:
             return 'sender'
@@ -175,4 +168,3 @@ class Player(BasePlayer):
             [7, 'Other'],
         ],
     )
-

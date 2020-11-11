@@ -14,7 +14,7 @@ SESSION_CONFIGS = [
         name='Experiment2',
         display_name="Experiment 2 (Behavior)",
         num_demo_participants=100,
-        app_sequence=['PartA', 'PartB']
+        app_sequence=['PartA_Introduction', 'Filler_task', 'PartB']
     ),
 ]
 
